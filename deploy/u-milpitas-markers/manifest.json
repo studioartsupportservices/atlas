@@ -1,0 +1,37 @@
+{
+ "pid": "u-milpitas-markers",
+ "web": [
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Milpitas Kiosk/Michael DiCarlo_ Milpitas_ Kiosk Proposal/Concept Images/Enscape_2024-02-10-11-37-31_Enscape named view 5.png",
+   "file": "w01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Milpitas Kiosk/Michael DiCarlo_ Milpitas_ Kiosk Proposal/Concept Images/Enscape_2024-02-10-11-37-31_Enscape named view 4.png",
+   "file": "w02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Milpitas Kiosk/Michael DiCarlo_ Milpitas_ Kiosk Proposal/Concept Images/Enscape_2024-02-10-11-37-31_Enscape named view 3.png",
+   "file": "w03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Milpitas Kiosk/Michael DiCarlo_ Milpitas_ Kiosk Proposal/Concept Images/Enscape_2024-02-10-11-37-31_Enscape named view 2.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Milpitas Kiosk/Michael DiCarlo_ Milpitas_ Kiosk Proposal/Concept Images/Enscape_2024-02-10-11-37-31_Enscape named view 1.png",
+   "file": "w05.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

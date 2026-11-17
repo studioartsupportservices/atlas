@@ -1,0 +1,68 @@
+{
+ "pid": "u-tacstil",
+ "web": [
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/TAC-Main Render.jpg",
+   "file": "w01.jpg",
+   "w": 2500,
+   "h": 1406
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/TACstil_panels 1_2.jpg",
+   "file": "w02.jpg",
+   "w": 2004,
+   "h": 2500
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/TACstil_panels 1_1.jpg",
+   "file": "w03.jpg",
+   "w": 2004,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073760181-1UHHB7I2Z0B7EIF2S47B/03.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/01 (1).png",
+   "file": "p01.jpg",
+   "w": 596,
+   "h": 1441
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/02 (1).png",
+   "file": "p02.jpg",
+   "w": 596,
+   "h": 1441
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/04 (1).png",
+   "file": "p03.jpg",
+   "w": 596,
+   "h": 1441
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/05 (1).png",
+   "file": "p04.jpg",
+   "w": 596,
+   "h": 1441
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/Enscape_2022-07-14-11-40-08.png",
+   "file": "p05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Unrealized Projects/Project Descriptions/Tacstil/Renders/close up unit.png",
+   "file": "p06.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "hero": null
+}
