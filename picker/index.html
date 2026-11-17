@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaSS Photo Picker</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1D1D1B">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<style>
+:root {
+  --bg: #F6F5F2; --surface: #FFFFFF; --surface-2: #EFEDE8; --ink: #1D1D1B; --ink-2: #5E5C57; --ink-3: #9A978F;
+  --line: #E2DFD8; --accent: #1D1D1B; --web: #2F6FDB; --atlas: #1E8A5A; --cover: #D99A0B; --proc: #8A4FC7; --warn: #B4561B; --warn-bg: #FBEBDD;
+  --radius: 10px; --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 14px/1.45 var(--font); -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.app { display: grid; grid-template-columns: 320px 1fr; grid-template-rows: auto 1fr; height: 100%; }
+
+/* top bar */
+.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; padding: 12px 18px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top h1 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+.top h1 small { font-weight: 500; color: var(--ink-3); margin-left: 6px; }
+.roots { display: flex; gap: 8px; margin-left: 12px; }
+.root { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 5px 12px; font-size: 12.5px; }
+.root i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); }
+.root.ok i { background: var(--atlas); }
+.root.need { border-color: var(--warn); background: var(--warn-bg); color: var(--warn); font-weight: 600; }
+.root.need i { background: var(--warn); }
+.top .sp { flex: 1; }
+.saved { font-size: 12.5px; color: var(--ink-3); }
+.saved.err { color: var(--warn); font-weight: 600; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 12px; font-size: 13px; }
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn.primary:hover { background: #3a3a37; }
+
+/* sidebar */
+.side { border-right: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; min-height: 0; }
+.side-head { padding: 12px 14px 10px; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.side-head input { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--bg); font: inherit; }
+.kinds { display: flex; gap: 6px; flex-wrap: wrap; }
+.kind { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 3px 10px; font-size: 12px; }
+.kind.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.plist { overflow: auto; flex: 1; padding: 6px 0 20px; }
+.pitem { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; padding: 9px 14px; border-left: 3px solid transparent; cursor: pointer; }
+.pitem:hover { background: var(--bg); }
+.pitem.on { background: var(--surface-2); border-left-color: var(--accent); }
+.pitem .t { font-weight: 600; font-size: 13.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pitem .m { grid-column: 1; font-size: 12px; color: var(--ink-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pitem .b { grid-row: 1 / span 2; grid-column: 2; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; font-size: 11.5px; }
+.tag { border-radius: 999px; padding: 1px 7px; font-weight: 600; font-size: 11px; }
+.tag.w { background: #E3ECFB; color: var(--web); }
+.tag.a { background: #DDF1E7; color: var(--atlas); }
+.tag.ready { background: var(--accent); color: #fff; }
+.tag.nof { background: var(--warn-bg); color: var(--warn); }
+.side-foot { border-top: 1px solid var(--line); padding: 10px 14px; font-size: 12px; color: var(--ink-2); }
+
+/* main */
+.main { min-width: 0; min-height: 0; overflow: auto; }
+.empty { max-width: 640px; margin: 60px auto; padding: 0 24px; color: var(--ink-2); }
+.empty h2 { color: var(--ink); font-size: 22px; margin: 0 0 10px; }
+.empty ol { padding-left: 20px; }
+.empty li { margin: 6px 0; }
+.empty .btns { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.empty code { background: var(--surface-2); padding: 1px 6px; border-radius: 5px; font-size: 12.5px; }
+.phead { position: sticky; top: 0; z-index: 3; background: rgba(246,245,242,.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 14px 22px 12px; }
+.phead .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.phead h2 { margin: 0; font-size: 20px; letter-spacing: -.01em; }
+.phead .meta { color: var(--ink-3); font-size: 13px; }
+.phead .sp { flex: 1; }
+.phead a { color: var(--ink-2); font-size: 12.5px; }
+.ready-tg { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; border: 1px solid var(--line); background: var(--surface); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.ready-tg.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.toolbar { display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
+.toolbar select { border: 1px solid var(--line); background: var(--surface); border-radius: 7px; padding: 4px 8px; font: inherit; }
+.toolbar label { display: inline-flex; gap: 5px; align-items: center; }
+.folders { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.folders b { color: var(--ink-2); font-weight: 600; }
+
+.section { padding: 14px 22px 4px; }
+.section h3 { margin: 0 0 8px; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
+.section h3 .hint { text-transform: none; letter-spacing: 0; color: var(--ink-3); font-weight: 400; font-size: 12px; }
+.strip { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; min-height: 92px; align-items: flex-start; }
+.strip.dropzone { outline: 2px dashed transparent; border-radius: 8px; }
+.strip .none { color: var(--ink-3); font-size: 12.5px; padding: 10px 0; }
+.chipimg { position: relative; flex: none; width: 112px; }
+.chipimg img, .chipimg .ph { width: 112px; height: 78px; object-fit: cover; border-radius: 6px; display: block; background: var(--surface-2); }
+.chipimg .n { position: absolute; top: 4px; left: 4px; background: rgba(0,0,0,.72); color: #fff; font-size: 11px; font-weight: 700; border-radius: 5px; padding: 0 5px; }
+.chipimg .x { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; border: 0; background: rgba(0,0,0,.72); color: #fff; font-size: 13px; line-height: 20px; padding: 0; }
+.chipimg .cap { font-size: 10.5px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+.chipimg .cap.low { color: var(--warn); font-weight: 600; }
+.chipimg[draggable="true"] { cursor: grab; }
+.chipimg.dragging { opacity: .35; }
+.copybtn { margin-left: auto; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; padding: 8px 22px 60px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.tile.sel-w { border-color: var(--web); box-shadow: 0 0 0 1px var(--web); }
+.tile.sel-a { border-color: var(--atlas); box-shadow: 0 0 0 1px var(--atlas); }
+.tile.sel-w.sel-a { border-color: var(--web); box-shadow: 0 0 0 1px var(--web), 0 0 0 4px #DDF1E7; }
+.thumb { position: relative; aspect-ratio: 4 / 3; background: var(--surface-2); cursor: zoom-in; }
+.thumb img { width: 100%; height: 100%; object-fit: contain; display: block; background: #E9E7E1; }
+.thumb .ph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink-3); font-size: 12px; text-align: center; padding: 10px; }
+.thumb .badges { position: absolute; top: 6px; left: 6px; display: flex; gap: 4px; }
+.thumb .badges span { font-size: 11px; font-weight: 700; color: #fff; border-radius: 5px; padding: 1px 6px; }
+.thumb .badges .bw { background: var(--web); }
+.thumb .badges .ba { background: var(--atlas); }
+.thumb .badges .bc { background: var(--cover); }
+.thumb .low { position: absolute; top: 6px; right: 6px; background: var(--warn); color: #fff; font-size: 10.5px; font-weight: 700; border-radius: 5px; padding: 1px 6px; }
+.tinfo { padding: 7px 9px 4px; font-size: 11.5px; color: var(--ink-3); }
+.tinfo .fn { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; }
+.tinfo .res.low { color: var(--warn); font-weight: 600; }
+.tacts { display: grid; grid-template-columns: 1fr 1fr auto; gap: 6px; padding: 6px 9px 9px; }
+.tg { border: 1px solid var(--line); background: var(--bg); border-radius: 7px; padding: 5px 0; font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.tg.w.on { background: var(--web); border-color: var(--web); color: #fff; }
+.tg.a.on { background: var(--atlas); border-color: var(--atlas); color: #fff; }
+.tg.c { padding: 5px 9px; }
+.tg:disabled { opacity: .35; cursor: not-allowed; }
+.proc { display: flex; align-items: center; gap: 7px; padding: 0 9px 9px; font-size: 12.5px; color: var(--ink-2); cursor: pointer; user-select: none; }
+.proc input { width: 16px; height: 16px; accent-color: var(--proc); margin: 0; cursor: pointer; }
+.proc.on { color: var(--proc); font-weight: 600; }
+.tile.sel-p { border-color: var(--proc); box-shadow: 0 0 0 1px var(--proc); }
+.thumb .badges .bp { background: var(--proc); }
+.tag.p { background: #EFE4FA; color: var(--proc); }
+.lb .bar .tg.p.on { background: var(--proc); border-color: var(--proc); color: #fff; }
+.tg.c.on { background: var(--cover); border-color: var(--cover); color: #fff; }
+.more { text-align: center; padding: 0 0 40px; }
+
+/* lightbox */
+.lb { position: fixed; inset: 0; background: #0C0C0B; z-index: 50; display: none; grid-template-rows: minmax(0, 1fr) auto; }
+.lb.on { display: grid; }
+.lb .imgwrap { position: relative; display: grid; place-items: center; min-height: 0; padding: 20px 70px 0; }
+.lb img { max-width: 100%; max-height: calc(100vh - 100px); object-fit: contain; }
+.lb .imgwrap { overflow: hidden; }
+.lb .bar { background: #111110; display: flex; align-items: center; gap: 10px; padding: 12px 20px 16px; color: #ddd; font-size: 13px; }
+.lb .bar .fn { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb .bar .tg { background: #2a2a28; border-color: #3a3a37; color: #ddd; padding: 7px 14px; }
+.lb .bar .tg.w.on { background: var(--web); border-color: var(--web); color: #fff; }
+.lb .bar .tg.a.on { background: var(--atlas); border-color: var(--atlas); color: #fff; }
+.lb .bar .tg.c.on { background: var(--cover); border-color: var(--cover); color: #fff; }
+.lb .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 72px; border: 0; border-radius: 8px; background: rgba(255,255,255,.08); color: #fff; font-size: 30px; }
+.lb .nav:hover { background: rgba(255,255,255,.16); }
+.lb .nav.l { left: 12px; } .lb .nav.r { right: 12px; }
+.lb .close { position: absolute; top: 12px; right: 14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.1); color: #fff; font-size: 22px; }
+.lb .keys { color: #888; font-size: 12px; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 13px; z-index: 60; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.on { opacity: 1; }
+.note { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: inherit; font-size: 13px; background: var(--surface); resize: vertical; min-height: 36px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1>Photo Picker <small>Studio SaSS · website &amp; Atlas</small></h1>
+    <div class="roots">
+      <button class="root" id="rootIA" type="button" title="The Info and Assets folder in My Drive › Applications Master Folder"><i></i><span>Info and Assets</span></button>
+      <button class="root" id="rootB180" type="button" title="Shared drives › B180 Project folders › Complete"><i></i><span>B180 Complete</span></button>
+    </div>
+    <span class="sp"></span>
+    <span class="saved" id="saved"></span>
+    <button class="btn" id="btnExport" type="button" title="Download a copy of your picks">Export picks</button>
+  </header>
+
+  <aside class="side">
+    <div class="side-head">
+      <input id="q" type="search" placeholder="Search projects…" autocomplete="off">
+      <div class="kinds" id="kinds"></div>
+    </div>
+    <div class="plist" id="plist"></div>
+    <div class="side-foot" id="sideFoot"></div>
+  </aside>
+
+  <main class="main" id="main"></main>
+</div>
+
+<div class="lb" id="lb">
+  <div class="imgwrap"><button class="nav l" id="lbL" type="button" aria-label="Previous">‹</button><img id="lbImg" alt=""><button class="nav r" id="lbR" type="button" aria-label="Next">›</button><button class="close" id="lbX" type="button" aria-label="Close">×</button></div>
+  <div class="bar"><span class="fn" id="lbFn"></span><span class="keys">W website · P process · A Atlas · C cover · ← → · Esc</span><button class="tg w" id="lbW" type="button">Website</button><button class="tg p" id="lbP" type="button">Process</button><button class="tg a" id="lbA" type="button">Atlas</button><button class="tg c" id="lbC" type="button">★ Cover</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const PROJECTS = [{"id": "swing", "title": "SWING", "year": 2026, "kind": "Built", "place": "Payne Park Tennis Center, Sarasota, Florida, USA", "web": "https://www.studioartsupportservices.com/swing", "src": ["IA:Completed Work/Project Images/SWING", "IA:Completed Work/Archive/SWING"], "site": ["4ff4d1f0-1469-493b-8717-577abb38e1c2/concept-design-for-swing-sculpture-by-michael-dicarlo-5.jpg", "35d06a1e-0478-4d73-9921-f06280c36806/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-14.png", "e610a915-b41c-4e33-961b-6462e1161937/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-17.png", "d47ee120-819e-4044-8ba8-08e3e6c1cef9/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-21.png", "ac99b908-a94d-440e-b7d5-7555adff7006/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-37.png", "f9297e13-ab2d-4695-a979-d4ba43cdb475/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-50.png", "1590245d-43b2-4177-b9d8-fbcb68a43c59/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-53.png", "5fa2564c-2535-4dfd-9155-8630107e8a71/swing-by-michael-dicarlo-dedication-ceremony-july-30-2026-photo-by-dylan-jon-wade-cox-60.png"]}, {"id": "mar-nostro", "title": "Mar Nostro — Notre Mer — بَحرُنا", "year": 2026, "kind": "Built", "place": "Jardin du Palais du Pharo, Marseille, France", "web": "https://www.studioartsupportservices.com/marnostro", "src": ["IA:Completed Work/Project Images/Mar Nostro", "IA:Completed Work/Archive/Mar Nostro", "IA:Completed Work/Project Images/Mar Nostro/MAR NOSTRO team-1-001/MAR NOSTRO team"], "site": ["6fa2d9cf-0d7b-43df-ad0b-ad1e765a7dde/WhatsApp+Image+2026-05-16+at+12.44.55.jpeg", "cbfc7c14-5e2b-4640-9f90-d7c00b0227b6/WhatsApp+Image+2026-05-16+at+12.44.55+%281%29.jpeg", "15bac6bd-9157-4003-ab46-f681ae7c351d/WhatsApp+Image+2026-05-16+at+12.44.54.jpeg", "3a578d88-65de-43f8-8329-2e854b6578a9/WhatsApp+Image+2026-05-16+at+12.44.54+%281%29.jpeg", "48889323-53cc-4d2e-8f58-96973b36a5d0/WhatsApp+Image+2026-05-16+at+12.44.53.jpeg", "a7e67c5a-5030-448f-aa97-03d9dad1e177/WhatsApp+Image+2026-05-16+at+12.44.54+%283%29.jpeg"]}, {"id": "muse", "title": "Muse — Le dragon et la serpent", "year": 2026, "kind": "Built", "place": "Université Grenoble Alpes, Grenoble, France", "web": "https://www.studioartsupportservices.com/muse", "src": ["IA:Completed Work/Project Images/Muse", "IA:Completed Work/Archive/Muse"], "site": ["acf4c42e-18b8-47ce-a324-fcd5599babb2/1+%282%29.jpeg", "c7edf64a-1587-4745-9cfe-077e08e1c596/1+%283%29.jpeg", "f65c99fb-0ac8-47c2-816b-5f3cc369bef2/1+%284%29.jpeg", "418746ee-738d-471a-b480-2b7b57af699d/1+%285%29.jpeg", "bd38c13d-3236-4153-ad55-f761fb8de942/1+%286%29.jpeg", "4f66853f-2919-4b6e-8a07-dcc2d95f9497/1+%287%29.jpeg"]}, {"id": "hexalumina", "title": "Hexalumina", "year": 2026, "kind": "Built", "place": "Singing Hills Recreation Center, Dallas, Texas, USA", "web": "https://www.studioartsupportservices.com/hexalumina", "src": ["IA:Completed Work/Project Images/Hexilumina", "IA:Completed Work/Archive/Hexilumina"], "site": ["d74499d5-206c-49cc-956d-caced414c64e/HEXALUMINA_AnaisaFranco_-004.jpeg", "6b316004-6b91-4217-a798-87188c386a2a/HEXALUMINA_AnaisaFranco_-023.jpeg", "2313d142-47d2-44af-9d95-f9926e0e5c43/HEXALUMINA_AnaisaFranco_-184.jpeg", "3297f1d1-0936-4e9b-8c58-215fe982c236/HEXALUMINA_AnaisaFranco_DronePhoto28-ADJUSTED.jpeg", "4bcf7b13-7c78-4590-bd09-ef5dbf1039dc/HEXALUMINA_AnaisaFranco_DronePhoto36.jpeg", "89377b6b-9c59-491c-81ab-2bef0a010581/IMG_6593.jpeg"]}, {"id": "hope-peace", "title": "Hope / Peace — Pier 28", "year": 2026, "kind": "Built", "place": "Pier 28, The Embarcadero, San Francisco, California, USA", "web": "", "src": ["B180:Hope Peace"], "site": []}, {"id": "lips", "title": "Lips (fnnch)", "year": 2026, "kind": "Built", "place": "South Beach Marina, The Embarcadero, San Francisco, California, USA", "web": "", "src": ["B180:Lips"], "site": []}, {"id": "fly-ranch-effigy", "title": "Fly Ranch Effigy 2026 (Temple of FOOB)", "year": 2026, "kind": "Built", "place": "Fly Ranch, Nevada, USA", "web": "https://www.studioartsupportservices.com/flyeffigy", "src": [], "site": ["7e99e3f4-c8f3-4806-9245-56161c1d0381/Photo+3-10-26%2C+17+38+38.jpg", "19008c3b-2ff4-4070-a874-cbe3b8de9029/Photo+3-10-26%2C+21+18+48.jpg", "b9e028cf-b6ee-454a-9914-f17139e7c1f5/Photo+7-10-26%2C+11+48+13.jpg", "ccfc2cd1-a274-4039-ae1b-1c586c34da60/Photo+3-10-26%2C+21+23+44.jpg", "ba197b8d-d4ce-4df9-82d7-b980a427e1ed/Photo+3-10-26%2C+21+28+10.jpg", "e771fefc-69ae-4845-9ab2-e1168b1112bf/Photo+3-10-26%2C+21+26+31.jpg", "a7db17a2-f8c6-4f83-89ff-deb0b9bf5af7/Photo+7-10-26%2C+11+48+28.jpg", "5e0f642c-8b4d-46a7-807c-2698c5f3a533/Photo+7-10-26%2C+11+21+05.jpg"]}, {"id": "ensembles", "title": "ENSEMBLE.s (ZAT Montpellier)", "year": 2025, "kind": "Built", "place": "La Mosson, Montpellier, France", "web": "https://www.studioartsupportservices.com/zat", "src": ["IA:Completed Work/Project Images/ZAT", "IA:Completed Work/Archive/ZAT"], "site": ["7e32e034-87f1-4d00-a7f6-4e00bc9549f4/6136787.jpg", "43c4c59f-df9d-485b-9286-50188e749bbc/Ensemble-ZAT-UVLAB-15.webp", "c6ba0468-d27f-4c15-8e33-23af6b716c77/PHOTO-2025-04-04-17-39-46.jpg", "c9542a7b-3579-40ee-878e-c170b53786d8/PHOTO-2025-09-26-12-48-28+%282%29.jpg", "04418102-dcfe-4692-b751-b6be3bb7df36/Ensemble-ZAT-UVLAB-36.webp", "eb1d146c-064f-4aee-9402-a9f7d13e2a70/PHOTO-2025-04-04-18-13-54.jpg"]}, {"id": "kokrobite-playground", "title": "Kokrobite Playground — HOME Academy", "year": 2026, "kind": "Built", "place": "HOME Academy, Kokrobite, Greater Accra, Ghana", "web": "", "src": [], "site": []}, {"id": "lesvos-playground", "title": "Lesvos Playground", "year": 2025, "kind": "Built", "place": "Lesvos, Greece", "web": "https://www.studioartsupportservices.com/lesvos-playground", "src": ["IA:Completed Work/Project Images/Lesvos Playground", "IA:Completed Work/Archive/Lesvos Playground"], "site": ["25bd5e5d-0370-4aeb-99e2-40b2a18380ec/IMG-20251028-WA0014.jpg", "b6383c4c-30c0-4471-9897-b60fae96fcdb/IMG-20251028-WA0015.jpg", "d50ab4fc-3b6e-434a-bc37-411a024868b6/IMG-20251028-WA0017.jpg", "70a9e2a7-6537-441e-b8f8-c3f76075b38b/IMG-20251028-WA0019.jpg", "74f71220-37f9-41aa-bab7-61b4a33a35c6/IMG-20251028-WA0021.jpg", "945e5e46-bffd-4c01-8041-fab01e189dab/WhatsApp+Image+2025-10-28+at+23.32.18_e0b7e7c6.jpg"]}, {"id": "un-nuevo-camino", "title": "Un Nuevo Camino", "year": 2025, "kind": "Built", "place": "Black Rock City, Nevada, USA — Burning Man 2025", "web": "https://www.studioartsupportservices.com/un-nuevo-camino", "src": ["IA:Completed Work/Project Images/Un Nuevo Camino", "IA:Completed Work/Archive/Un Nuevo Camino"], "site": ["4d6d1c00-36c5-422a-9581-f43c0e0a6aef/unnuevocamino01.png", "75b92714-db3e-418b-b71a-db6e4f9152f8/unnuevocamino03.png", "cb090bc3-93e4-47c0-940a-85aaf13cf923/06.png", "3249e2e1-f9b0-4ff0-bd05-1a38a70fd5ad/07.png", "32474c8c-0163-4097-a199-992f9cd3ded3/WhatsApp+Image+2026-03-01+at+20.08.24+%282%29.jpeg", "98b224c5-a484-4637-92a9-ab8d37a5fa99/WhatsApp+Image+2026-03-01+at+20.08.24+%286%29.jpeg"]}, {"id": "interlace", "title": "Interlace", "year": 2024, "kind": "Built", "place": "RiversEdge, St. Johns River, Jacksonville, Florida, USA", "web": "https://www.studioartsupportservices.com/interlace", "src": ["IA:Completed Work/Project Images/Interlace", "IA:Completed Work/Archive/Interlace"], "site": ["db9ca4db-9967-480b-bcbd-886f172247f7/06.webp", "4888e627-70e3-4561-a584-28bb3f4a220f/07.webp", "4f6dbaff-1f4f-4232-881a-7c5c39325ba7/014.webp", "df97e7ae-407e-40ef-92b7-c37039fda796/03.webp"]}, {"id": "ouroboros", "title": "Ouroboros", "year": 2024, "kind": "Built", "place": "Vabaduse väljak, Viljandi, Estonia", "web": "https://www.studioartsupportservices.com/ouroboros", "src": ["IA:Completed Work/Project Images/Ouroboros", "IA:Completed Work/Archive/Ouroboros"], "site": ["1780073726137-NIXDM2B65UNV5QJXB68N/IMG_2268.JPEG", "1780073726055-30AVJJEGKSYYRYNQO4EU/IMG_2207.JPEG", "1780073726089-5WBU81CO1BSJLOVK2SCJ/IMG_2276.JPEG", "1780073726121-QMH73DDIT73LGG95VWVK/IMG_2120.JPEG", "1780073726016-3U8DYGW22TOJPTU6IHRX/IMG_2157.jpg", "1780073726072-ZCZWZRJSHYFO76CNOKR5/IMG_2074.JPEG", "1780073726036-I8HYUMNTCZ15WYY5T2T1/IMG_2112.JPEG"]}, {"id": "cascode", "title": "Cascode", "year": 2024, "kind": "Built", "place": "Amy Gutmann Hall, University of Pennsylvania, Philadelphia, USA", "web": "https://www.studioartsupportservices.com/cascode", "src": ["IA:Completed Work/Project Images/Cascode", "IA:Completed Work/Archive/Cascode"], "site": ["1780073669870-LFB8YKFSAX3OCJ2O6CTB/210727_Street+facade+view.jpg", "1780073669922-W4853SVEHT2QR5GJPF0O/210727_Street+view+2.jpg", "1780073669852-AYE8LUZQL3BSXU0G234D/from+below+hex.png", "1780073669904-PZLTD1HUJ9O7JK213O8H/Full+view.jpg", "1780073669887-TEQXOK3U4UMQYZ4EB2PR/nunu.png"]}, {"id": "man-base-2026", "title": "Man Base Pavilion 2026 — Cryptomeria", "year": 2026, "kind": "Built", "place": "Black Rock City, Nevada, USA — Burning Man 2026", "web": "https://www.studioartsupportservices.com/man-base-2026", "src": ["IA:Completed Work/Project Images/Man Base 2026", "IA:Completed Work/Archive/Man Base 2026"], "site": []}, {"id": "man-base-2025", "title": "Man Base Pavilion 2025 — The World Fair of Unity", "year": 2025, "kind": "Built", "place": "Black Rock City, Nevada, USA — Burning Man 2025", "web": "https://www.studioartsupportservices.com/man-base-2025", "src": ["IA:Completed Work/Project Images/Man Base 2025", "IA:Completed Work/Archive/Man Base 2025"], "site": []}, {"id": "man-base-2024", "title": "Man Base Pavilion 2024 — The Other", "year": 2024, "kind": "Built", "place": "Black Rock City, Nevada, USA — Burning Man 2024", "web": "https://www.studioartsupportservices.com/man-base-2024", "src": ["IA:Completed Work/Project Images/Man Base 2024", "IA:Completed Work/Archive/Man Base 2024"], "site": []}, {"id": "noun0", "title": "Noun 0", "year": 2025, "kind": "Built", "place": "Art City, Tucumcari, New Mexico, USA", "web": "https://www.studioartsupportservices.com/noun0", "src": ["IA:Completed Work/Project Images/Noun 0", "IA:Completed Work/Archive/Noun 0"], "site": ["d60bee03-11ef-4611-a80c-7e7bdf02a055/38aa2f9927136586eed50520935671c5dd8d5961-1290x833.jpg", "d7641dc5-a3ea-4a24-abf3-658dd78c5c4a/b7e4421372c29bbd88608b778a559640abdb1e50-1577x1142.webp", "98bf622b-3f50-47b9-979e-bfb71e5219ea/15e81d9c559858226f56af53e204d8c9f07d8eb6-864x498.webp", "d1e1a9b3-ff6d-421b-9d04-afaacb2b219e/9e1d34e86bb2a929b6434689adc36b18f5fc8370-874x946.webp", "6bbc2830-d2f9-424a-9ecd-61522f069fca/PHOTO-2025-09-26-12-15-14+%281%29.jpg", "44b96578-70a2-48ff-8c7f-4dc1922c5c89/PHOTO-2025-09-26-12-15-14.jpg"]}, {"id": "princess-theatre", "title": "Tucumcari Princess Theatre", "year": 2023, "kind": "Built", "place": "Tucumcari, New Mexico, USA", "web": "https://www.studioartsupportservices.com/tpt", "src": [], "site": ["3c0e1719-d272-4559-8cb3-b32a3fcc2842/change+the+angle+of+the+view+to+look+at+the+theatre+from+the+other+side+of+the+street+and+the+other+.jpeg", "60f82608-4cbd-4907-b9ec-910cfdee209b/Change+the+time+of+day+to+morning._Change+the+season+to+summer..jpeg", "ac4f3828-f836-4225-b2a8-693fcf1db004/The+Princess+Theatre+in+Tucumcari+features+a+vibrant+art+deco+facade+with+intricate+patterns+of+colo.jpeg", "c3fda153-3852-4a7f-a98f-c40e99a7d260/Scenario+3+Day.png", "1fcd6d8f-9d17-4afd-aaba-b7356426caf2/Scenario+Outlook.png", "5228daa2-7356-4b44-97d8-127f0199be63/An+aerial+urban+view+shows+a+vibrant+and+bustling+Main+Street+in+Tucumcari%2C+New+Mexico%2C+where+the+re+%281%29.jpeg"]}, {"id": "vibrant-meridian", "title": "Vibrant Meridian", "year": 2023, "kind": "Built", "place": "Marcy Nanocenter, Marcy, New York, USA", "web": "https://www.studioartsupportservices.com/vibrant-meridian", "src": ["IA:Completed Work/Project Images/Vibrant Meridian", "IA:Completed Work/Archive/Vibrant Meridian"], "site": ["1780073706845-AV7GAX4Z6LIGG5E4O6T9/DicarloSculpture-01.jpg", "1780073706605-2BT7ZI945KJBAX86KFK9/DicarloSculpture-03.jpg", "1780073706753-8Z87G32PACXIZJ2KIT4L/DicarloSculpture-07.jpg", "1780073706532-XRZLHKTS3A9WGGP3XLCV/DicarloSculpture-12.jpg", "1780073706623-SBBVGJABO57UYUX5IQ0E/DicarloSculpture-22.jpg", "1780073706772-YO5BH964738YJD6JBVTG/DicarloSculpture-35.jpg", "1780073706715-I5LM5YMZM98JX0Q8B0ZI/DicarloSculpture-aerial-08.jpg", "1780073706658-NT6S1WJHNR66TO1KUR4B/DicarloSculpture-43.jpg"]}, {"id": "emanativ", "title": "Emanativ", "year": 2023, "kind": "Built", "place": "Harlem River Greenway, New York City, USA", "web": "https://www.studioartsupportservices.com/emanitiv", "src": ["IA:Completed Work/Project Images/Emanativ", "IA:Completed Work/Archive/Emanativ"], "site": ["1780073712983-368B09CXR26SD0EIBKOF/Enscape_2022-05-02-10-28-43.png", "1780073712948-GEJK458VN9XQO2D5GWFQ/Enscape_2022-05-02-10-34-15.png", "1780073712931-8KBCLV9D9JLY8VYR675K/Enscape_2022-05-02-10-34-45.png", "1780073713018-4GGHPHQHGUOHPTXV073Z/Enscape_2022-05-02-10-52-00.png", "1780073712965-TMUZMDFP9OKYKQSYRWHE/Enscape_2022-05-02-10-52-51.png", "1780073712999-YPJP5FUHBIO8U9YDAEUF/Enscape_2022-11-08-16-02-26_Enscape+named+view+2.png"]}, {"id": "embraced-loop", "title": "Embraced Loop — HIV/AIDS Memorial", "year": 2022, "kind": "Built", "place": "Phoenix Park, Dublin, Ireland", "web": "https://www.studioartsupportservices.com/hivaids-memorial", "src": ["IA:Completed Work/Project Images/Embraced Loop", "IA:Completed Work/Archive/Embraced Loop"], "site": ["1780073755037-UY9IL5H07YRY7VY6TEAA/HIV+Monument+01.jpg", "1780073755133-SP4RH34TX4P9HDYBAB28/HIV+Monument+02.jpg", "1780073755055-9CGDNHN19S022CWFA244/WhatsApp+Image+2024-03-20+at+22.03.27_db554b17.jpg", "1780073755073-1UZFVZRRHVBTM090XHO8/WhatsApp+Image+2024-03-20+at+22.03.33_144cd8e8.jpg", "1780073755095-LGLQCJAHXYIEIDT8HMOH/WhatsApp+Image+2024-03-20+at+22.03.33_7239e4fc.jpg", "1780073755116-L3RTVEIGD27736ZEXCUB/WhatsApp+Image+2024-03-20+at+22.03.33_e9284497.jpg"]}, {"id": "peaceful-journey", "title": "Peaceful Journey", "year": 2022, "kind": "Built", "place": "Mount Vernon, New York, USA", "web": "https://www.studioartsupportservices.com/peaceful-journey", "src": ["IA:Completed Work/Project Images/Peaceful Journey", "IA:Completed Work/Archive/Peaceful Journey"], "site": ["1780073761374-B4SV3AXIWRXT9G40RLU2/DSC00055.png", "1780073761337-CXT5VUIJ015W8QR97P6S/DSC00091.png", "1780073761258-5JA1ZOF4K5MZ3WJPVFNI/DSC00117.png", "1780073761428-47LE8OWQB7GXBSB3IIIJ/DSC00127.png", "1780073761239-4IETJ07KO6YIR93J54GJ/DSC00627.JPG", "1780073761355-8U9WB74IJGTHT4G8R3GY/IMG_7642.JPG", "1780073761277-7A02BCSCGP4QB1NFDX3Q/UNDER+1.jpg", "1780073761301-RD19XQJ5CZA5DDYBBETS/UNDER+2.jpg", "1780073761392-EX115O6WYEHJ9TSO5E0J/SHADOW+1+w_FLWR.jpg"]}, {"id": "whale-shark", "title": "Suspended Whale Shark", "year": 2022, "kind": "Built", "place": "Lusail, Qatar (built in London, UK)", "web": "https://www.studioartsupportservices.com/suspended-whale-shark", "src": ["IA:Completed Work/Project Images/Suspended Whale Shark", "IA:Completed Work/Archive/Suspended Whale Shark"], "site": ["1780073735154-O0TIF7C4LMV2EKJGUY3W/Doha+Whale+Shark.jpg", "1780073735118-L3RWK3ZL2RT6GWMVHZEW/318782738_1510045179483266_832656057593485306_n.jpg", "1780073735192-E4O3DBW7ENUXYDBZBVO5/319006389_1260662537825834_7901029014585623530_n.jpg", "1780073735232-KVOVX9AFTCZ8YIHFW2SE/319188855_678647230644790_7401740608883500014_n.jpg", "1780073735172-WP9DY7T7RBI60FSZQBXP/319829651_484908873627292_1645629361696263662_n.jpg", "1780073735135-WGJ3A70W8MLNAFD8ODLR/Photo+Oct+13+2022%2C+18+34+48.jpg", "1780073735312-H2WRUUEV3HBQKGDRTCYV/Photo+Oct+13+2022%2C+18+34+48+%281%29.jpg", "1780073735275-GAFVBV99R52U5DDR1H4J/WhatsApp+Image+2022-11-16+at+11.09.46+AM.jpeg"]}, {"id": "sunlit-ranch", "title": "Sunlit Ranch", "year": 2023, "kind": "Built", "place": "Tucumcari, New Mexico, USA", "web": "https://www.studioartsupportservices.com/sunlit", "src": [], "site": ["1780073733266-EC8O2LMBT8P7IVZ315EV/Enscape_2023-10-24-12-16-41_Enscape+named+view+12.png", "1780073733330-IBTFV7154HWM96HNVQBZ/Enscape_2023-10-24-12-16-41_Enscape+named+view+14.png", "1780073733113-94UODJ7A5R56TD455AOB/Enscape_2023-10-24-12-16-41_Enscape+named+view+15.png", "1780073733170-1SON60CQ53QU6J63XZCZ/Enscape_2023-10-24-12-16-41_Enscape+named+view+20.png", "1780073733202-H4DO47MWBTOH5AGQ3XDN/Enscape_2023-10-24-12-37-09_Enscape+named+view+17.png", "1780073733309-8TYN215SBRQBC4TZP159/Enscape_2023-10-24-12-37-09_Enscape+named+view+27.png", "1780073733295-RZI9KFNJXET9YUV1U8KA/Enscape_2023-10-16-16-19-59_Enscape+named+view+1.png", "1780073733280-BYEALG7GNHH7FAIWTC3E/Enscape_2023-10-16-16-19-59_Enscape+named+view+3.png"]}, {"id": "catharsis", "title": "Catharsis", "year": 2022, "kind": "Built", "place": "Black Rock City, Nevada, USA — Burning Man 2022", "web": "https://www.studioartsupportservices.com/catharsis", "src": ["IA:Completed Work/Project Images/Catharsis", "IA:Completed Work/Archive/Catharsis"], "site": []}, {"id": "parker-slide", "title": "Parker Slide", "year": 2019, "kind": "Built", "place": "Maui, Hawaii, USA (private residence)", "web": "https://www.studioartsupportservices.com/parker-slide", "src": ["IA:Completed Work/Project Images/Parker Slide", "IA:Completed Work/Archive/Parker Slide"], "site": []}, {"id": "nemus", "title": "NEMUS — On Healing and Re-Enchanting", "year": 2024, "kind": "Built", "place": "Strasbourg, France", "web": "https://www.studioartsupportservices.com/strasbourg", "src": ["IA:Completed Work/Project Images/NEMUS (Strasbourg Pavilion)", "IA:Completed Work/Archive/NEMUS (Strasbourg Pavilion)"], "site": []}, {"id": "galaxia", "title": "Galaxia — Temple at Burning Man 2018", "year": 2018, "kind": "Built", "place": "Black Rock City, Nevada, USA", "web": "https://www.studioartsupportservices.com/galaxia", "src": ["IA:Completed Work/Project Images/Galaxia", "IA:Completed Work/Archive/Galaxia"], "site": []}, {"id": "gats-head", "title": "GATS Head", "year": 2018, "kind": "Built", "place": "ComplexCon, Los Angeles, California, USA", "web": "https://www.studioartsupportservices.com/gats", "src": [], "site": ["1780073666655-FQVW8ZAR7GXHB1HAL2Y9/IMG_1046.JPG", "1780073666675-D2K6NVOOU10UF2UCG6KR/IMG_2490.jpg", "1780073666685-J69GP9CG517TYTNEG5SY/IMG_3193.jpeg", "1780073666666-61807PA83JHYGW3PNX87/IMG_3262.jpg"]}, {"id": "worlds-away", "title": "Worlds Away (The Keepers)", "year": 2024, "kind": "Built", "place": "Monterey County Fairgrounds, Monterey, California, USA", "web": "https://www.studioartsupportservices.com/worldsaway", "src": ["IA:Completed Work/Project Images/Worlds Away", "IA:Completed Work/Archive/Worlds Away"], "site": ["0b979e59-0a5a-40ba-b808-dc9fbc9d540f/worldsaway01.jpeg", "a71adaec-806f-46e8-97ad-73b38ae93e2a/worldsaway02.jpeg", "8686a074-514d-4a81-a343-2fc5d7bfd6ac/worldsaway06.jpeg", "332c8651-ae11-41aa-8324-9bb9ba09e593/worldsaway07.jpeg", "2dbfa71f-d27a-4d43-a2fb-5c2d30b8b32d/worldsaway08.jpeg", "e9b91fd1-b1db-479c-a2be-8e5b1e35101b/worldsaway09.jpeg"]}, {"id": "individuality", "title": "Individuality", "year": 2026, "kind": "Built", "place": "24th St & Illinois St, Dogpatch, San Francisco, California, USA", "web": "", "src": ["B180:individuality"], "site": []}, {"id": "u-basket-chapel", "title": "Basket Chapel", "year": 2026, "kind": "Unrealized", "place": "Black Rock City, Nevada, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Basket Chapel/Images", "IA:Unrealized Projects/Project Descriptions/Basket Chapel"], "site": []}, {"id": "u-outstretched-hand", "title": "The Outstretched Hand (Capacitive Light)", "year": 2026, "kind": "Unrealized", "place": "Black Rock City, Nevada, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/The Outstretched Hand (Capacitive Light)/Images", "IA:Unrealized Projects/Project Descriptions/The Outstretched Hand (Capacitive Light)"], "site": []}, {"id": "u-temple-of-allegory", "title": "Temple of Allegory (Gabion temple)", "year": 2026, "kind": "Unrealized", "place": "Black Rock City, Nevada, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Temple of Allegory (Gabion temple)/Images", "IA:Unrealized Projects/Project Descriptions/Temple of Allegory (Gabion temple)"], "site": []}, {"id": "u-ashland-plaza", "title": "Ashland Plaza", "year": 2023, "kind": "Unrealized", "place": "Ashland Place, Brooklyn, New York, USA", "web": "https://www.studioartsupportservices.com/ashland", "src": ["IA:Unrealized Projects/Project Descriptions/Ashland Plaza"], "site": []}, {"id": "u-pettersen-memorial", "title": "Pettersen Plaza memorial (balloon ribbon)", "year": 2026, "kind": "Unrealized", "place": "College Hill, Cedar Falls, Iowa, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Balloon Mem"], "site": []}, {"id": "u-civic-tides", "title": "Civic Tides", "year": 2025, "kind": "Unrealized", "place": "Southeast Government Center, Orlando, Florida, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Civic tides"], "site": []}, {"id": "u-coachman-park", "title": "Coachman Park sculpture (Clearwater)", "year": 2026, "kind": "Unrealized", "place": "Coachman Park, Clearwater, Florida, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Clearwater"], "site": []}, {"id": "u-fxbg-obelisk", "title": "FXBG obelisk (Fredericksburg)", "year": 2025, "kind": "Unrealized", "place": "Fredericksburg, Virginia, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/FXBG"], "site": []}, {"id": "u-faena", "title": "Faena beach installation (Art Basel Miami Beach)", "year": 2022, "kind": "Unrealized", "place": "Faena District beach, Miami Beach, Florida, USA", "web": "https://www.studioartsupportservices.com/faena", "src": ["IA:Unrealized Projects/Project Descriptions/Faena"], "site": []}, {"id": "u-milpitas-markers", "title": "Milpitas Parks System — Historical Park Markers", "year": 2024, "kind": "Unrealized", "place": "Milpitas, California, USA", "web": "https://www.studioartsupportservices.com/milpitas-parks-system", "src": ["IA:Unrealized Projects/Project Descriptions/Milpitas Kiosk"], "site": []}, {"id": "u-nashville", "title": "Nashville proposal", "year": 2024, "kind": "Unrealized", "place": "Nashville, Tennessee, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Nashville Prop"], "site": []}, {"id": "u-orlando-agate", "title": "Orlando Agate (Lake Nona monumental sculpture)", "year": 2026, "kind": "Unrealized", "place": "Luminary Boulevard, Lake Nona, Orlando, Florida, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Orlando agate"], "site": []}, {"id": "u-tacstil", "title": "TACstil Pavilion", "year": 2022, "kind": "Unrealized", "place": "Granada, Spain", "web": "https://www.studioartsupportservices.com/tacsil-pavilion", "src": ["IA:Unrealized Projects/Project Descriptions/Tacstil"], "site": []}, {"id": "u-chroma-loop-wichita", "title": "Chroma Loop & Solar Chroma (Arkansas River, Wichita)", "year": 2025, "kind": "Unrealized", "place": "Arkansas River, Wichita, Kansas, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Wichita Proposal"], "site": []}, {"id": "p-barker-hangar", "title": "Barker Hangar — event pre-visualization", "year": 2024, "kind": "Production", "place": "Barker Hangar, Santa Monica, California, USA", "web": "", "src": ["IA:Production/Barker Hangar"], "site": []}, {"id": "p-netflix-lounge", "title": "Netflix — event lounge and stage", "year": 2023, "kind": "Production", "place": "Sunset Tower, West Hollywood, California, USA", "web": "", "src": ["IA:Production/NetFlix"], "site": []}, {"id": "p-staud-montauk", "title": "Staud — courtyard brand event", "year": 2024, "kind": "Production", "place": "Montauk, New York, USA", "web": "", "src": ["IA:Production/Staud Montauk"], "site": []}, {"id": "p-sukeban-anime-expo", "title": "Sukeban — outdoor wrestling event at Anime Expo", "year": 2025, "kind": "Production", "place": "Los Angeles Convention Center, 1201 S Figueroa St, Los Angeles, California, USA", "web": "", "src": ["IA:Production/Sukeban LA"], "site": []}, {"id": "p-gcfa-dinner", "title": "Green Carpet Fashion Awards — dinner layout", "year": 2024, "kind": "Production", "place": "Los Angeles, California, USA", "web": "https://www.studioartsupportservices.com/gcfa", "src": ["IA:Production/Green Carpet Fashion Awards"], "site": []}, {"id": "p-hop-concepts", "title": "HOP — 'Sinatra' and 'Soirée' event concepts", "year": 2024, "kind": "Production", "place": "Palm Springs, California, USA", "web": "", "src": ["IA:Production/HOP"], "site": []}, {"id": "p-playbill-coach", "title": "Playbill × Coach — brand activations", "year": 2024, "kind": "Production", "place": "New York City, New York, USA", "web": "", "src": ["IA:Production/PLAYBILL"], "site": []}, {"id": "p-sukeban-la-2024", "title": "Sukeban — Los Angeles 2024 theatre show", "year": 2024, "kind": "Production", "place": "Los Angeles, California, USA", "web": "", "src": ["IA:Production/Sukeban LA 2024"], "site": []}, {"id": "p-sukeban-london", "title": "Sukeban — London show", "year": 2024, "kind": "Production", "place": "London, United Kingdom", "web": "", "src": ["IA:Production/Sukeban London"], "site": []}, {"id": "u-brisbane-loop-bench", "title": "Brisbane loop bench", "year": 2026, "kind": "Unrealized", "place": "Brisbane, California, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Brisbane"], "site": []}, {"id": "u-chateau", "title": "Chateau", "year": 2025, "kind": "Unrealized", "place": "France", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Chateau"], "site": []}, {"id": "u-nsu-facade-panels", "title": "Norfolk State University facade panels", "year": 2024, "kind": "Unrealized", "place": "Norfolk State University, Norfolk, Virginia, USA", "web": "https://www.studioartsupportservices.com/nsu-facade", "src": ["IA:Unrealized Projects/Project Descriptions/NSU"], "site": []}, {"id": "u-posy-park", "title": "Posy Park", "year": 2025, "kind": "Unrealized", "place": "California, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Posy park"], "site": []}, {"id": "u-sbtv-art-basel", "title": "SBTV — Art Basel Miami Beach", "year": 2023, "kind": "Unrealized", "place": "Miami Beach, Florida, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/SBTV_BASEL"], "site": []}, {"id": "u-sonar-axis", "title": "Sonar Axis", "year": 2025, "kind": "Unrealized", "place": "Black Rock City, Nevada, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/Sonar Axis"], "site": []}, {"id": "fab-fest", "title": "IRIS Pavilion — FAB Fest", "year": null, "kind": "Built", "place": "University of Westminster, London, UK", "web": "https://www.studioartsupportservices.com/fabfest", "src": ["IA:Completed Work/Project Images/FAB Fest", "IA:Completed Work/Archive/FAB Fest"], "site": []}, {"id": "u-uv-lab-concept-one", "title": "UV LAB Concept One", "year": 2022, "kind": "Unrealized", "place": "No specific location", "web": "https://www.studioartsupportservices.com/uv-lab-concept-one", "src": ["IA:Unrealized Projects/Project Descriptions/Unity Proposal"], "site": []}, {"id": "u-we-belong-together", "title": "We Belong Together (Unity)", "year": 2025, "kind": "Unrealized", "place": "San Francisco, California, USA", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/WeBelongTogether"], "site": []}, {"id": "doll", "title": "Doll", "year": 2026, "kind": "Built", "place": "Tallinn, Estonia", "web": "", "src": ["IA:Completed Work/Project Images/Doll", "IA:Completed Work/Archive/Doll", "IA:Completed Work/Project Descriptions/Doll"], "site": []}, {"id": "u-ars-bench", "title": "ARS Bench", "year": 2023, "kind": "Unrealized", "place": "No specific location", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/ARS Bench"], "site": []}, {"id": "u-ars-tree", "title": "ARS Tree", "year": 2023, "kind": "Unrealized", "place": "No specific location", "web": "", "src": ["IA:Unrealized Projects/Project Descriptions/ARS Tree"], "site": []}, {"id": "u-milk-crate", "title": "Milk Crate Light Sculpture", "year": 2024, "kind": "Unrealized", "place": "No specific location", "web": "https://www.studioartsupportservices.com/milkcrate", "src": ["IA:Unrealized Projects/Project Descriptions/MilkCrate"], "site": []}, {"id": "p-canada-goose", "title": "Canada Goose — experiential activation concepts", "year": 2025, "kind": "Production", "place": "Alaska, USA", "web": "", "src": ["IA:Production/Canada Goose"], "site": []}, {"id": "p-bel-air-wedding", "title": "Bel Air wedding — private estate wedding", "year": 2024, "kind": "Production", "place": "Bel Air, Los Angeles, California, USA", "web": "https://www.studioartsupportservices.com/bell-air", "src": ["IA:Production/Bel Air wedding"], "site": []}, {"id": "p-sukeban-miami", "title": "Sukeban — Miami outdoor show", "year": 2025, "kind": "Production", "place": "Miami, Florida, USA", "web": "", "src": ["IA:Production/Sukeban Miami"], "site": []}, {"id": "p-tesla-cybertruck", "title": "Tesla — Cybertruck experiential event", "year": 2023, "kind": "Production", "place": "Palo Alto, California, USA", "web": "", "src": ["IA:Production/TESLA EVENT 2", "IA:Production/TESLA EVENT"], "site": []}];
+const SITE_BASE = 'https://images.squarespace-cdn.com/content/v1/6a19c4b5853c806a2fd8254d/';
+const SITE_DIMS = {"swing": [1632, 1200, 1200, 1800, 1800, 1800, 1200, 1800], "mar-nostro": [2048, 2048, 2048, 1365, 2048, 2048], "muse": [900, 1200, 900, 1200, 1200, 1600], "hexalumina": [2500, 2500, 2500, 2500, 2500, 2500], "fly-ranch-effigy": [2500, 2500, 2270, 2500, 2500, 2500, 2270, 2500], "ensembles": [522, 481, 1536, 1200, 481, 2048], "lesvos-playground": [2500, 2500, 2500, 2500, 2500, 2500], "un-nuevo-camino": [1516, 1172, 1536, 1656, 1200, 1200], "interlace": [2500, 2500, 2500, 1500], "ouroboros": [2048, 2048, 2048, 2048, 2500, 2048, 2048], "cascode": [2500, 2500, 2500, 2500, 2500], "noun0": [1290, 1577, 864, 874, 1600, 1600], "princess-theatre": [2500, 2500, 2500, 2500, 2226, 1584], "vibrant-meridian": [2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500], "emanativ": [1920, 1920, 1920, 1920, 1920, 1920], "embraced-loop": [2500, 2500, 1594, 2500, 2500, 2500], "peaceful-journey": [600, 1200, 900, 600, 2500, 2500, 2500, 2500, 2500], "whale-shark": [1440, 984, 1440, 1440, 1440, 1024, 765, 1536], "sunlit-ranch": [1920, 1920, 1920, 1920, 1920, 1920, 1920, 1920], "gats-head": [2500, 2500, 500, 744], "worlds-away": [2500, 2500, 2500, 2500, 2500, 2500]};
+const PICKS_PATH = ['Completed Work', 'Atlas'];
+const PICKS_FILE = 'photo-picks.json';
+const LOW = 2000;            // long side below this is flagged as low resolution
+const PAGE = 120;            // tiles rendered per page
+const IMG_RE = /\.(jpe?g|png|webp|gif|avif|heic|heif|tiff?|bmp)$/i;
+const NO_PREVIEW = /\.(heic|heif|tiff?)$/i;
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const supported = 'showDirectoryPicker' in window;
+
+// ---------- IndexedDB (folder handles, thumbnail cache, backup of picks)
+const db = new Promise((res, rej) => {
+  const r = indexedDB.open('sass-photo-picker', 1);
+  r.onupgradeneeded = () => { r.result.createObjectStore('kv'); r.result.createObjectStore('thumbs'); };
+  r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+});
+async function idb(store, mode, fn) {
+  const d = await db; return new Promise((res, rej) => { const t = d.transaction(store, mode); const s = t.objectStore(store); const r = fn(s); t.oncomplete = () => res(r && r.result); t.onerror = () => rej(t.error); });
+}
+const kvGet = (k) => idb('kv', 'readonly', (s) => s.get(k));
+const kvSet = (k, v) => idb('kv', 'readwrite', (s) => s.put(v, k));
+const thGet = (k) => idb('thumbs', 'readonly', (s) => s.get(k)).catch(() => null);
+const thSet = (k, v) => idb('thumbs', 'readwrite', (s) => s.put(v, k)).catch(() => null);
+
+// ---------- state
+const roots = { IA: null, B180: null };          // directory handles
+const rootOk = { IA: false, B180: false };       // permission granted this session
+let picks = { version: 1, updated: null, projects: {} };
+let current = null;                               // project id
+let files = [];                                   // scanned files of current project
+let shown = PAGE;
+let filterKind = 'All', query = '', viewFilter = 'all', sortBy = 'folder';
+const fileIndex = new Map();                      // path -> {path,name,folder,handle,w,h,size,mtime}
+const urlCache = new Map();                       // path -> thumbnail object URL
+
+function P(id) { const s = picks.projects[id] || (picks.projects[id] = { web: [], process: [], atlas: [], cover: null, folders: [], note: '', ready: false }); if (!s.process) s.process = []; return s; }
+function proj(id) { return PROJECTS.find((p) => p.id === id); }
+
+// ---------- folders
+async function connect(key) {
+  if (!supported) return;
+  try {
+    if (roots[key] && !rootOk[key]) {
+      const perm = await roots[key].requestPermission({ mode: key === 'IA' ? 'readwrite' : 'read' });
+      if (perm === 'granted') { rootOk[key] = true; afterConnect(key); return; }
+    }
+    const h = await window.showDirectoryPicker({ id: 'sass-' + key, mode: key === 'IA' ? 'readwrite' : 'read' });
+    if (key === 'IA') {
+      const names = []; for await (const [n] of h.entries()) names.push(n.toLowerCase());
+      if (!names.includes('completed work')) { toast('That doesn’t look like “Info and Assets” — it should contain the Completed Work folder.'); return; }
+    }
+    roots[key] = h; rootOk[key] = true; await kvSet('root-' + key, h); afterConnect(key);
+  } catch (e) { if (e.name !== 'AbortError') toast('Couldn’t open that folder: ' + e.message); }
+}
+async function afterConnect(key) {
+  if (key === 'IA') await loadPicks();
+  renderRoots(); renderList(); if (current) openProject(current); else renderMain();
+}
+async function restoreRoots() {
+  for (const key of ['IA', 'B180']) {
+    const h = await kvGet('root-' + key).catch(() => null);
+    if (!h) continue;
+    roots[key] = h;
+    try { rootOk[key] = (await h.queryPermission({ mode: key === 'IA' ? 'readwrite' : 'read' })) === 'granted'; } catch { rootOk[key] = false; }
+  }
+}
+async function dirAt(root, parts, create = false) {
+  let h = root;
+  for (const part of parts) {
+    if (!part) continue;
+    try { h = await h.getDirectoryHandle(part, { create }); continue; } catch (e) { if (create) throw e; }
+    let found = null; const lc = part.toLowerCase();
+    for await (const [n, c] of h.entries()) if (c.kind === 'directory' && n.toLowerCase() === lc) { found = c; break; }
+    if (!found) return null; h = found;
+  }
+  return h;
+}
+async function resolveFolder(spec) {           // 'IA:Completed Work/Project Images/SWING'
+  const [key, rel] = spec.split(/:(.*)/s);
+  if (!roots[key] || !rootOk[key]) return { missingRoot: key };
+  const h = await dirAt(roots[key], rel.split('/'));
+  return h ? { handle: h, key, rel } : { notFound: spec };
+}
+async function scan(dir, key, rel, out, depth = 0) {
+  const entries = [];
+  for await (const [name, h] of dir.entries()) entries.push([name, h]);
+  entries.sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }));
+  for (const [name, h] of entries) {
+    if (name.startsWith('.') || name.startsWith('~$')) continue;
+    const r = rel ? rel + '/' + name : name;
+    if (h.kind === 'file' && IMG_RE.test(name)) {
+      const path = key + ':' + r;
+      const f = fileIndex.get(path) || { path, name, folder: rel.split('/').slice(-2).join(' / '), handle: h };
+      f.handle = h; fileIndex.set(path, f); out.push(f);
+      if (out.length >= 3000) return;
+    } else if (h.kind === 'directory' && depth < 5 && !/^(__MACOSX|thumbs?|\.)/i.test(name)) {
+      await scan(h, key, r, out, depth + 1);
+    }
+  }
+}
+
+// ---------- picks file
+async function picksDir(create) { return roots.IA && rootOk.IA ? dirAt(roots.IA, PICKS_PATH, create) : null; }
+async function loadPicks() {
+  let fromFile = null, fromDb = null;
+  try { const d = await picksDir(false); if (d) { const fh = await d.getFileHandle(PICKS_FILE); fromFile = JSON.parse(await (await fh.getFile()).text()); } } catch {}
+  try { fromDb = await kvGet('picks'); } catch {}
+  const pick = [fromFile, fromDb].filter(Boolean).sort((a, b) => String(b.updated).localeCompare(String(a.updated)))[0];
+  if (pick && pick.projects) picks = pick;
+}
+let saveTimer = null;
+function changed() {
+  picks.updated = new Date().toISOString();
+  kvSet('picks', picks).catch(() => {});
+  $('#saved').className = 'saved'; $('#saved').textContent = 'Saving…';
+  clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 700);
+  renderList();
+}
+async function saveNow() {
+  saveTimer = null;
+  const el = $('#saved');
+  try {
+    const d = await picksDir(true);
+    if (!d) throw new Error('connect Info and Assets to save');
+    const fh = await d.getFileHandle(PICKS_FILE, { create: true });
+    const w = await fh.createWritable(); await w.write(JSON.stringify(picks, null, 1)); await w.close();
+    el.className = 'saved'; el.textContent = 'Saved to Drive · ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  } catch (e) { el.className = 'saved err'; el.textContent = 'Not saved to Drive (' + e.message + ') — kept in this browser'; }
+}
+function exportPicks() {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(picks, null, 1)], { type: 'application/json' }));
+  a.download = PICKS_FILE; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+// ---------- thumbnails
+const queue = []; let active = 0;
+function wantThumb(f, img) { queue.push([f, img]); pump(); }
+function pump() {
+  while (active < 3 && queue.length) {
+    const [f, img] = queue.shift();
+    if (!img.isConnected) continue;
+    active++; makeThumb(f).then((u) => { if (u && img.isConnected) { img.src = u; img.hidden = false; const ph = img.parentElement.querySelector('.ph'); if (ph) ph.remove(); } updateInfo(f); }).finally(() => { active--; pump(); });
+  }
+}
+async function makeThumb(f) {
+  if (urlCache.has(f.path)) return urlCache.get(f.path);
+  try {
+    const file = await f.handle.getFile();
+    f.size = file.size; f.mtime = file.lastModified;
+    const key = f.path + '|' + file.size + '|' + file.lastModified;
+    const hit = await thGet(key);
+    if (hit) { f.w = hit.w; f.h = hit.h; const u = URL.createObjectURL(hit.blob); urlCache.set(f.path, u); return u; }
+    if (NO_PREVIEW.test(f.name)) { f.noPreview = true; return null; }
+    const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    f.w = bmp.width; f.h = bmp.height;
+    const s = Math.min(1, 480 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(bmp.width * s)); c.height = Math.max(1, Math.round(bmp.height * s));
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height); bmp.close();
+    const blob = await new Promise((r) => c.toBlob(r, 'image/jpeg', 0.8));
+    thSet(key, { blob, w: f.w, h: f.h });
+    const u = URL.createObjectURL(blob); urlCache.set(f.path, u); return u;
+  } catch (e) { f.err = true; return null; }
+}
+const io = new IntersectionObserver((ents) => { for (const e of ents) if (e.isIntersecting) { io.unobserve(e.target); const f = fileIndex.get(e.target.dataset.path); if (f) wantThumb(f, e.target); } }, { rootMargin: '600px' });
+
+// ---------- rendering: roots + list
+function renderRoots() {
+  for (const key of ['IA', 'B180']) {
+    const b = $('#root' + key);
+    b.className = 'root ' + (rootOk[key] ? 'ok' : 'need');
+    b.querySelector('span').textContent = (key === 'IA' ? 'Info and Assets' : 'B180 Complete') + (rootOk[key] ? ' ✓' : roots[key] ? ' · click to reconnect' : ' · connect');
+  }
+}
+function renderList() {
+  const kinds = ['All', 'Built', 'Unrealized', 'Production', 'Ready', 'To do'];
+  $('#kinds').innerHTML = kinds.map((k) => '<button type="button" class="kind' + (k === filterKind ? ' on' : '') + '" data-k="' + k + '">' + k + '</button>').join('');
+  const q = query.toLowerCase();
+  const list = PROJECTS.filter((p) => {
+    const s = picks.projects[p.id];
+    if (filterKind === 'Ready') { if (!s || !s.ready) return false; }
+    else if (filterKind === 'To do') { if (s && s.ready) return false; }
+    else if (filterKind !== 'All' && p.kind !== filterKind) return false;
+    return !q || (p.title + ' ' + (p.place || '') + ' ' + p.id).toLowerCase().includes(q);
+  });
+  $('#plist').innerHTML = list.map((p) => {
+    const s = picks.projects[p.id] || {};
+    const nof = !p.src.length && !(s.folders || []).length;
+    return '<div class="pitem' + (p.id === current ? ' on' : '') + '" data-id="' + p.id + '"><span class="t">' + esc(p.title) + '</span>'
+      + '<span class="b">' + (s.ready ? '<span class="tag ready">Ready</span>' : '') + ((s.web || []).length ? '<span class="tag w">Web ' + s.web.length + '</span>' : '') + ((s.process || []).length ? '<span class="tag p">Process ' + s.process.length + '</span>' : '') + ((s.atlas || []).length ? '<span class="tag a">Atlas ' + s.atlas.length + '</span>' : '') + (nof ? '<span class="tag nof">No folder</span>' : '') + '</span>'
+      + '<span class="m">' + esc([p.kind, p.year, p.place].filter(Boolean).join(' · ')) + '</span></div>';
+  }).join('') || '<div style="padding:14px;color:var(--ink-3)">No projects match.</div>';
+  const all = Object.values(picks.projects);
+  $('#sideFoot').textContent = all.filter((s) => s.ready).length + ' of ' + PROJECTS.length + ' projects marked ready · ' + all.reduce((n, s) => n + (s.web || []).length, 0) + ' website photos (+' + all.reduce((n, s) => n + (s.process || []).length, 0) + ' process) · ' + all.reduce((n, s) => n + (s.atlas || []).length, 0) + ' Atlas photos';
+}
+
+// ---------- rendering: main
+function renderMain() {
+  const m = $('#main');
+  if (!supported) {
+    m.innerHTML = '<div class="empty"><h2>Open this in Chrome or Edge</h2><p>The Photo Picker reads your Drive folders directly, which only Chrome and Microsoft Edge allow. Right-click the file › Open with › Google Chrome.</p></div>';
+    return;
+  }
+  if (!current) {
+    m.innerHTML = '<div class="empty"><h2>Pick the photos for each project</h2>'
+      + '<ol><li>Connect <b>Info and Assets</b> (My Drive › Applications Master Folder › Info and Assets) and, for Lips / Hope Peace / Individuality, <b>B180 Complete</b> (Shared drives › B180 Project folders › Complete). The browser asks once per session.</li>'
+      + '<li>Choose a project on the left. Every photo in its folders appears with its real size; anything under ' + LOW + 'px on the long side is flagged <b style="color:var(--warn)">LOW-RES</b>.</li>'
+      + '<li>Click <b style="color:var(--web)">Website</b> and/or <b style="color:var(--atlas)">Atlas</b> on the photos you want, in the order you want them. ★ marks the cover. Tick <b style="color:var(--proc)">Process photo</b> for build/process shots: they go on the website page in a Process section below the finished photos, never on the Atlas. Drag in the strips at the top to reorder.</li>'
+      + '<li>Mark the project <b>Ready</b>. Picks save automatically to <code>Completed Work › Atlas › photo-picks.json</code>; tell Claude when you’re done and the full-resolution originals get processed and deployed.</li></ol>'
+      + '<div class="btns">' + (rootOk.IA ? '' : '<button class="btn primary" type="button" data-connect="IA">Connect Info and Assets</button>') + (rootOk.B180 ? '' : '<button class="btn" type="button" data-connect="B180">Connect B180 Complete</button>') + '</div></div>';
+    return;
+  }
+}
+async function openProject(id) {
+  current = id; shown = PAGE; renderList();
+  const p = proj(id), s = P(id), m = $('#main');
+  m.innerHTML = headHtml(p, s) + '<div class="section" id="loading" style="color:var(--ink-3)">Reading folders…</div>';
+  bindHead(p, s);
+  const specs = [...p.src, ...(s.folders || [])];
+  files = []; const notes = [];
+  for (const spec of specs) {
+    const r = await resolveFolder(spec);
+    if (r.missingRoot) { notes.push('Connect <b>' + (r.missingRoot === 'IA' ? 'Info and Assets' : 'B180 Complete') + '</b> to see ' + esc(spec.split(':')[1])); continue; }
+    if (r.notFound) { notes.push('Folder not found: ' + esc(spec)); continue; }
+    try { await scan(r.handle, r.key, r.rel, files); } catch (e) { notes.push('Couldn’t read ' + esc(spec) + ': ' + esc(e.message)); }
+  }
+  if (current !== id) return;
+  const seen = new Set(); files = files.filter((f) => !seen.has(f.path) && seen.add(f.path));
+  $('#folders').innerHTML = (specs.length ? 'Folders: ' + specs.map((x) => '<b>' + esc(x.replace(/^IA:/, '').replace(/^B180:/, 'B180 › ')) + '</b>').join(' · ') : 'No folder linked yet.') + (notes.length ? '<br>' + notes.join('<br>') : '') + ' · ' + files.length + ' photos';
+  $('#loading').remove();
+  renderBody();
+}
+function headHtml(p, s) {
+  return '<div class="phead"><div class="row"><h2>' + esc(p.title) + '</h2><span class="meta">' + esc([p.kind, p.year, p.place].filter(Boolean).join(' · ')) + '</span>'
+    + (p.web ? '<a href="' + esc(p.web) + '" target="_blank" rel="noopener">website page ↗</a>' : '')
+    + '<span class="sp"></span><button class="btn" type="button" id="addFolder">+ Add folder</button><button type="button" class="ready-tg' + (s.ready ? ' on' : '') + '" id="readyTg">' + (s.ready ? '✓ Ready' : 'Mark ready') + '</button></div>'
+    + '<div class="folders" id="folders"></div>'
+    + '<div class="toolbar"><label>Show <select id="vf"><option value="all">All photos</option><option value="sel">Picked only</option><option value="unsel">Not picked</option><option value="hi">Hide low-res</option></select></label>'
+    + '<label>Sort <select id="sb"><option value="folder">Folder order</option><option value="big">Largest first</option><option value="new">Newest first</option><option value="name">Name</option></select></label>'
+    + '<input class="note" id="note" placeholder="Notes for Claude (credits, captions, what to avoid)…" value="' + esc(s.note || '') + '" style="flex:1;min-width:240px"></div></div>';
+}
+function bindHead(p, s) {
+  $('#vf').value = viewFilter; $('#sb').value = sortBy;
+  $('#vf').onchange = (e) => { viewFilter = e.target.value; shown = PAGE; renderGrid(); };
+  $('#sb').onchange = (e) => { sortBy = e.target.value; shown = PAGE; renderGrid(); };
+  $('#note').oninput = (e) => { s.note = e.target.value; changed(); };
+  $('#readyTg').onclick = () => { s.ready = !s.ready; changed(); const b = $('#readyTg'); b.classList.toggle('on', s.ready); b.textContent = s.ready ? '✓ Ready' : 'Mark ready'; };
+  $('#addFolder').onclick = () => addFolder(p, s);
+}
+async function addFolder(p, s) {
+  try {
+    const h = await window.showDirectoryPicker({ id: 'sass-add', mode: 'read' });
+    for (const key of ['IA', 'B180']) {
+      if (!roots[key] || !rootOk[key]) continue;
+      const parts = await roots[key].resolve(h);
+      if (parts) { const spec = key + ':' + parts.join('/'); if (!s.folders.includes(spec) && !p.src.includes(spec)) { s.folders.push(spec); changed(); } openProject(p.id); return; }
+    }
+    toast('Pick a folder inside Info and Assets or B180 Complete (connect them first).');
+  } catch (e) { if (e.name !== 'AbortError') toast(e.message); }
+}
+function renderBody() {
+  const m = $('#main');
+  m.querySelectorAll('.section, .grid, .more').forEach((n) => n.remove());
+  const p = proj(current);
+  const wrap = document.createElement('div');
+  wrap.innerHTML = stripSection('web', 'Website · finished', 'drag to reorder · first photo leads the gallery')
+    + stripSection('process', 'Website · process', 'shown below the finished photos under a “Process” heading · none picked = no process section')
+    + stripSection('atlas', 'Atlas', 'first photo is the Atlas hero', '<button class="btn copybtn" type="button" id="copyWeb">Same as website</button>')
+    + (p.site && p.site.length ? '<div class="section"><h3>Now on the website <span class="hint">for comparison · px width shown</span></h3><div class="strip">' + p.site.map((x) => { const w = (SITE_DIMS[current] || [])[p.site.indexOf(x)]; return '<div class="chipimg"><img loading="lazy" src="' + SITE_BASE + encodeURI(x) + '?format=300w" alt=""><div class="cap' + (w && w < LOW ? ' low' : '') + '">' + (w ? w + 'px' : '') + '</div></div>'; }).join('') + '</div></div>' : '')
+    + '<div class="section"><h3>All photos in the folders <span class="hint" id="gridCount"></span></h3></div><div class="grid" id="grid"></div><div class="more" id="more"></div>';
+  while (wrap.firstChild) m.appendChild(wrap.firstChild);
+  const cw = $('#copyWeb'); if (cw) cw.onclick = () => { const s = P(current); s.atlas = s.web.slice(); changed(); renderStrips(); refreshTiles(); };
+  renderStrips(); renderGrid();
+}
+function stripSection(kind, label, hint, extra = '') {
+  return '<div class="section"><h3>' + label + ' <span class="hint">' + hint + '</span>' + extra + '</h3><div class="strip dropzone" id="strip-' + kind + '"></div></div>';
+}
+function renderStrips() {
+  const s = P(current);
+  for (const kind of ['web', 'process', 'atlas']) {
+    const el = $('#strip-' + kind); if (!el) continue;
+    const arr = s[kind];
+    el.innerHTML = arr.length ? arr.map((path, i) => {
+      const f = fileIndex.get(path), u = urlCache.get(path), name = path.split('/').pop();
+      const lo = f && f.w && Math.max(f.w, f.h) < LOW;
+      return '<div class="chipimg" draggable="true" data-kind="' + kind + '" data-i="' + i + '" data-path="' + esc(path) + '">' + (u ? '<img src="' + u + '" alt="">' : '<div class="ph"></div>') + '<span class="n">' + (i + 1) + (s.cover === path ? ' ★' : '') + '</span><button class="x" type="button" title="Remove">×</button><div class="cap' + (lo ? ' low' : '') + '">' + (f && f.w ? Math.max(f.w, f.h) + 'px · ' : '') + esc(name) + '</div></div>';
+    }).join('') : '<span class="none">' + (kind === 'process' ? 'No process photos — tick “Process photo” on any photo below to add it here.' : 'Nothing picked yet — click “' + (kind === 'web' ? 'Website' : 'Atlas') + '” on the photos below.') + '</span>';
+  }
+}
+function visibleFiles() {
+  const s = P(current);
+  let v = files.slice();
+  if (viewFilter === 'sel') v = v.filter((f) => s.web.includes(f.path) || s.atlas.includes(f.path) || s.process.includes(f.path));
+  if (viewFilter === 'unsel') v = v.filter((f) => !s.web.includes(f.path) && !s.atlas.includes(f.path) && !s.process.includes(f.path));
+  if (viewFilter === 'hi') v = v.filter((f) => !(f.w && Math.max(f.w, f.h) < LOW));
+  if (sortBy === 'big') v.sort((a, b) => (Math.max(b.w || 0, b.h || 0) - Math.max(a.w || 0, a.h || 0)) || ((b.size || 0) - (a.size || 0)));
+  if (sortBy === 'new') v.sort((a, b) => (b.mtime || 0) - (a.mtime || 0));
+  if (sortBy === 'name') v.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+  return v;
+}
+function renderGrid() {
+  const g = $('#grid'); if (!g) return;
+  const v = visibleFiles();
+  $('#gridCount').textContent = v.length + ' photo' + (v.length === 1 ? '' : 's') + (sortBy === 'big' ? ' · sizes fill in as thumbnails load' : '');
+  g.innerHTML = v.slice(0, shown).map(tileHtml).join('') || '<div style="color:var(--ink-3)">No photos here' + (files.length ? ' with this filter.' : '. Use “+ Add folder” to link the folder that holds this project’s photos.') + '</div>';
+  g.querySelectorAll('img[data-path]').forEach((img) => io.observe(img));
+  $('#more').innerHTML = v.length > shown ? '<button class="btn" type="button" id="moreBtn">Show ' + Math.min(PAGE, v.length - shown) + ' more of ' + (v.length - shown) + '</button>' : '';
+  const mb = $('#moreBtn'); if (mb) mb.onclick = () => { shown += PAGE; renderGrid(); };
+}
+function tileHtml(f) {
+  const s = P(current), wi = s.web.indexOf(f.path), ai = s.atlas.indexOf(f.path), pi = s.process.indexOf(f.path), u = urlCache.get(f.path);
+  return '<div class="tile' + (wi >= 0 ? ' sel-w' : '') + (ai >= 0 ? ' sel-a' : '') + (pi >= 0 ? ' sel-p' : '') + '" data-path="' + esc(f.path) + '">'
+    + '<div class="thumb" data-open="1"><img data-path="' + esc(f.path) + '" alt="" ' + (u ? 'src="' + u + '"' : 'hidden') + '>' + (u ? '' : '<div class="ph">' + (f.noPreview ? 'No preview (' + esc(f.name.split('.').pop().toUpperCase()) + ')<br>still selectable' : 'Loading…') + '</div>')
+    + '<div class="badges">' + (wi >= 0 ? '<span class="bw">W' + (wi + 1) + '</span>' : '') + (pi >= 0 ? '<span class="bp">P' + (pi + 1) + '</span>' : '') + (ai >= 0 ? '<span class="ba">A' + (ai + 1) + '</span>' : '') + (s.cover === f.path ? '<span class="bc">★</span>' : '') + '</div>'
+    + (f.w && Math.max(f.w, f.h) < LOW ? '<span class="low">LOW-RES</span>' : '') + '</div>'
+    + '<div class="tinfo"><div class="fn" title="' + esc(f.path) + '">' + esc(f.name) + '</div><span class="res' + (f.w && Math.max(f.w, f.h) < LOW ? ' low' : '') + '">' + info(f) + '</span></div>'
+    + '<div class="tacts"><button type="button" class="tg w' + (wi >= 0 || pi >= 0 ? ' on' : '') + '" data-t="web">Website</button><button type="button" class="tg a' + (ai >= 0 ? ' on' : '') + '" data-t="atlas"' + (pi >= 0 ? ' disabled title="Process photos stay off the Atlas"' : '') + '>Atlas</button><button type="button" class="tg c' + (s.cover === f.path ? ' on' : '') + '" data-t="cover" title="Cover photo"' + (pi >= 0 ? ' disabled' : '') + '>★</button></div>'
+    + '<label class="proc' + (pi >= 0 ? ' on' : '') + '"><input type="checkbox" data-t="process"' + (pi >= 0 ? ' checked' : '') + '> Process photo</label></div>';
+}
+function info(f) { return (f.w ? f.w + ' × ' + f.h : f.err ? 'couldn’t read' : '…') + (f.size ? ' · ' + (f.size / 1048576).toFixed(f.size > 10485760 ? 0 : 1) + ' MB' : '') + (f.folder ? ' · ' + esc(f.folder) : ''); }
+function updateInfo(f) {
+  const t = document.querySelector('.tile[data-path="' + CSS.escape(f.path) + '"]'); if (!t) return;
+  const r = t.querySelector('.res'); r.innerHTML = info(f); r.classList.toggle('low', !!(f.w && Math.max(f.w, f.h) < LOW));
+  if (f.w && Math.max(f.w, f.h) < LOW && !t.querySelector('.thumb .low')) t.querySelector('.thumb').insertAdjacentHTML('beforeend', '<span class="low">LOW-RES</span>');
+  if (f.noPreview) { const ph = t.querySelector('.ph'); if (ph) ph.innerHTML = 'No preview (' + esc(f.name.split('.').pop().toUpperCase()) + ')<br>still selectable'; }
+  if (f.err) { const ph = t.querySelector('.ph'); if (ph) ph.textContent = 'Couldn’t load — file may still be downloading from Drive'; }
+  if (P(current).web.includes(f.path) || P(current).atlas.includes(f.path) || P(current).process.includes(f.path)) renderStrips();
+}
+function refreshTiles() {
+  document.querySelectorAll('.tile').forEach((t) => {
+    const f = fileIndex.get(t.dataset.path); if (!f) return;
+    const tmp = document.createElement('div'); tmp.innerHTML = tileHtml(f); const n = tmp.firstChild;
+    t.className = n.className; t.querySelector('.badges').innerHTML = n.querySelector('.badges').innerHTML;
+    t.querySelector('.tacts').replaceWith(n.querySelector('.tacts')); t.querySelector('.proc').replaceWith(n.querySelector('.proc'));
+  });
+}
+function toggle(path, t) {
+  const s = P(current);
+  if (t === 'process') {
+    const i = s.process.indexOf(path);
+    if (i >= 0) { s.process.splice(i, 1); if (!s.web.includes(path)) s.web.push(path); }
+    else { s.web = s.web.filter((x) => x !== path); s.atlas = s.atlas.filter((x) => x !== path); if (s.cover === path) s.cover = null; s.process.push(path); }
+    changed(); renderStrips(); refreshTiles(); if (lbOn) lbSync(); return;
+  }
+  if (s.process.includes(path)) {
+    if (t === 'web') { s.process = s.process.filter((x) => x !== path); changed(); renderStrips(); refreshTiles(); if (lbOn) lbSync(); }
+    else toast('Process photos go on the website only — untick “Process photo” first.');
+    return;
+  }
+  if (t === 'cover') { s.cover = s.cover === path ? null : path; if (s.cover && !s.web.includes(path) && !s.atlas.includes(path)) { s.web.unshift(path); s.atlas.unshift(path); } }
+  else { const a = s[t], i = a.indexOf(path); if (i >= 0) a.splice(i, 1); else a.push(path); if (s.cover === path && !s.web.includes(path) && !s.atlas.includes(path)) s.cover = null; }
+  changed(); renderStrips(); refreshTiles(); if (lbOn) lbSync();
+}
+
+// ---------- lightbox
+let lbOn = false, lbList = [], lbI = 0, lbUrl = null;
+async function lbOpen(path) {
+  lbList = visibleFiles().map((f) => f.path); lbI = Math.max(0, lbList.indexOf(path)); lbOn = true; $('#lb').classList.add('on'); await lbShow();
+}
+async function lbShow() {
+  const f = fileIndex.get(lbList[lbI]); if (!f) return;
+  $('#lbFn').textContent = f.name + '  ·  ' + (f.w ? f.w + ' × ' + f.h : '') + (f.size ? '  ·  ' + (f.size / 1048576).toFixed(1) + ' MB' : '') + '  ·  ' + (lbI + 1) + ' / ' + lbList.length;
+  lbSync();
+  const img = $('#lbImg'); img.src = urlCache.get(f.path) || '';
+  try { const file = await f.handle.getFile(); if (lbUrl) URL.revokeObjectURL(lbUrl); lbUrl = URL.createObjectURL(file); if (lbList[lbI] === f.path && !NO_PREVIEW.test(f.name)) img.src = lbUrl; } catch {}
+}
+function lbSync() { const s = P(current), p = lbList[lbI]; $('#lbW').classList.toggle('on', s.web.includes(p) || s.process.includes(p)); $('#lbP').classList.toggle('on', s.process.includes(p)); $('#lbA').classList.toggle('on', s.atlas.includes(p)); $('#lbC').classList.toggle('on', s.cover === p); }
+function lbClose() { lbOn = false; $('#lb').classList.remove('on'); $('#lbImg').src = ''; if (lbUrl) { URL.revokeObjectURL(lbUrl); lbUrl = null; } }
+function lbStep(d) { if (!lbList.length) return; lbI = (lbI + d + lbList.length) % lbList.length; lbShow(); }
+
+// ---------- events
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 3800); }
+$('#rootIA').onclick = () => connect('IA');
+$('#rootB180').onclick = () => connect('B180');
+$('#btnExport').onclick = exportPicks;
+$('#q').oninput = (e) => { query = e.target.value; renderList(); };
+$('#kinds').onclick = (e) => { const b = e.target.closest('.kind'); if (b) { filterKind = b.dataset.k; renderList(); } };
+$('#plist').onclick = (e) => { const it = e.target.closest('.pitem'); if (it) openProject(it.dataset.id); };
+$('#main').addEventListener('click', (e) => {
+  const c = e.target.closest('[data-connect]'); if (c) return connect(c.dataset.connect);
+  if (e.target.matches('.proc input')) return toggle(e.target.closest('.tile').dataset.path, 'process');
+  const tg = e.target.closest('.tile .tg'); if (tg) return toggle(tg.closest('.tile').dataset.path, tg.dataset.t);
+  const th = e.target.closest('.thumb[data-open]'); if (th) return lbOpen(th.closest('.tile').dataset.path);
+  const x = e.target.closest('.chipimg .x'); if (x) { const ch = x.closest('.chipimg'); const s = P(current); s[ch.dataset.kind].splice(+ch.dataset.i, 1); changed(); renderStrips(); refreshTiles(); return; }
+  const ci = e.target.closest('.chipimg[data-path]'); if (ci && fileIndex.has(ci.dataset.path)) return lbOpen(ci.dataset.path);
+});
+// drag to reorder inside a strip
+let drag = null;
+$('#main').addEventListener('dragstart', (e) => { const ch = e.target.closest('.chipimg[draggable]'); if (!ch) return; drag = { kind: ch.dataset.kind, i: +ch.dataset.i }; ch.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; });
+$('#main').addEventListener('dragend', (e) => { const ch = e.target.closest('.chipimg'); if (ch) ch.classList.remove('dragging'); drag = null; });
+$('#main').addEventListener('dragover', (e) => { if (drag && e.target.closest('#strip-' + drag.kind)) e.preventDefault(); });
+$('#main').addEventListener('drop', (e) => {
+  if (!drag) return; const strip = e.target.closest('#strip-' + drag.kind); if (!strip) return; e.preventDefault();
+  const chips = [...strip.querySelectorAll('.chipimg')]; let to = chips.length - 1;
+  for (let i = 0; i < chips.length; i++) { const r = chips[i].getBoundingClientRect(); if (e.clientX < r.left + r.width / 2) { to = i; break; } }
+  const a = P(current)[drag.kind]; const [it] = a.splice(drag.i, 1); if (to > drag.i) to--; a.splice(Math.max(0, to), 0, it);
+  changed(); renderStrips(); refreshTiles();
+});
+$('#lbX').onclick = lbClose; $('#lbL').onclick = () => lbStep(-1); $('#lbR').onclick = () => lbStep(1);
+$('#lbW').onclick = () => toggle(lbList[lbI], 'web'); $('#lbA').onclick = () => toggle(lbList[lbI], 'atlas'); $('#lbC').onclick = () => toggle(lbList[lbI], 'cover'); $('#lbP').onclick = () => toggle(lbList[lbI], 'process');
+document.addEventListener('keydown', (e) => {
+  if (!lbOn || e.target.closest('input, textarea, select')) return;
+  const k = e.key.toLowerCase();
+  if (k === 'escape') lbClose(); else if (k === 'arrowleft') lbStep(-1); else if (k === 'arrowright') lbStep(1);
+  else if (k === 'w') toggle(lbList[lbI], 'web'); else if (k === 'a') toggle(lbList[lbI], 'atlas'); else if (k === 'c') toggle(lbList[lbI], 'cover'); else if (k === 'p') toggle(lbList[lbI], 'process');
+});
+window.addEventListener('beforeunload', (e) => { if (saveTimer) { e.preventDefault(); e.returnValue = ''; } });
+
+(async function init() {
+  if (supported) {
+    await restoreRoots();
+    try { const b = await kvGet('picks'); if (b && b.projects) picks = b; } catch {}
+    if (rootOk.IA) await loadPicks();
+  }
+  renderRoots(); renderList(); renderMain();
+})();
+</script>
+<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
+</body>
+</html>
