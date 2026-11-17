@@ -150,6 +150,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .hopts img:hover { opacity: 1; }
 .hopts img.on { border-color: var(--cover); opacity: 1; }
 .tag.h { background: #FBF0D6; color: var(--cover); }
+body.dropping .main { outline: 3px dashed var(--web); outline-offset: -8px; }
 /* lightbox */
 .lb { position: fixed; inset: 0; background: #0C0C0B; z-index: 50; display: none; grid-template-rows: minmax(0, 1fr) auto; }
 .lb.on { display: grid; }
@@ -212,7 +213,7 @@ const SITE = {"swing": {"s": "swing", "bg": ["b2eb223c-75af-4342-8dbc-f0c9b29f70
 const ATLAS = {"swing": ["img/swing-s1.jpg", "img/swing-s2.jpg", "img/swing-s3.jpg", "img/swing-s4.jpg", "img/swing-s5.jpg", "img/swing-s6.jpg", "img/swing-s7.jpg", "img/swing-s8.jpg"], "mar-nostro": ["img/mar-nostro-s1.jpg", "img/mar-nostro-s2.jpg", "img/mar-nostro-s3.jpg", "img/mar-nostro-s4.jpg", "img/mar-nostro-s5.jpg", "img/mar-nostro-s6.jpg"], "muse": ["img/muse-s1.jpg", "img/muse-s2.jpg", "img/muse-s3.jpg", "img/muse-s4.jpg", "img/muse-s5.jpg", "img/muse-s6.jpg"], "hexalumina": ["img/hexalumina-s1.jpg", "img/hexalumina-s2.jpg", "img/hexalumina-s3.jpg", "img/hexalumina-s4.jpg", "img/hexalumina-s5.jpg", "img/hexalumina-s6.jpg"], "lips": ["img/lips-b180-2.jpg", "img/lips-b180-1.jpg", "img/lips-b180-4.jpg"], "fly-ranch-effigy": ["img/fly-ranch-effigy-s1.jpg", "img/fly-ranch-effigy-s2.jpg", "img/fly-ranch-effigy-s3.jpg", "img/fly-ranch-effigy-s4.jpg", "img/fly-ranch-effigy-s5.jpg", "img/fly-ranch-effigy-s6.jpg", "img/fly-ranch-effigy-s7.jpg", "img/fly-ranch-effigy-s8.jpg"], "ensembles": ["img/ensembles-s1.jpg", "img/ensembles-s2.jpg", "img/ensembles-s3.jpg", "img/ensembles-s4.jpg", "img/ensembles-s5.jpg", "img/ensembles-s6.jpg"], "lesvos-playground": ["img/lesvos-playground-s1.jpg", "img/lesvos-playground-s2.jpg", "img/lesvos-playground-s3.jpg", "img/lesvos-playground-s4.jpg", "img/lesvos-playground-s5.jpg", "img/lesvos-playground-s6.jpg"], "un-nuevo-camino": ["img/un-nuevo-camino-s1.jpg", "img/un-nuevo-camino-s2.jpg", "img/un-nuevo-camino-s3.jpg", "img/un-nuevo-camino-s4.jpg", "img/un-nuevo-camino-s5.jpg", "img/un-nuevo-camino-s6.jpg"], "interlace": ["img/interlace-s1.jpg", "img/interlace-s2.jpg", "img/interlace-s3.jpg", "img/interlace-s4.jpg"], "ouroboros": ["img/ouroboros-s1.jpg", "img/ouroboros-s2.jpg", "img/ouroboros-s3.jpg", "img/ouroboros-s4.jpg", "img/ouroboros-s5.jpg", "img/ouroboros-s6.jpg", "img/ouroboros-s7.jpg"], "cascode": ["img/cascode-s1.jpg", "img/cascode-s2.jpg", "img/cascode-s3.jpg", "img/cascode-s4.jpg", "img/cascode-s5.jpg"], "man-base-2025": ["img/man-base-2025-w1.jpg", "img/man-base-2025-w2.jpg", "img/man-base-2025-w3.jpg", "img/man-base-2025-w4.jpg"], "man-base-2024": ["img/man-base-2024-w1.jpg", "img/man-base-2024-w2.jpg", "img/man-base-2024-w3.jpg", "img/man-base-2024-w4.jpg"], "noun0": ["img/noun0-s1.jpg", "img/noun0-s2.jpg", "img/noun0-s3.jpg", "img/noun0-s4.jpg", "img/noun0-s5.jpg", "img/noun0-s6.jpg"], "princess-theatre": ["img/princess-theatre-s1.jpg", "img/princess-theatre-s2.jpg", "img/princess-theatre-s3.jpg", "img/princess-theatre-s4.jpg", "img/princess-theatre-s5.jpg", "img/princess-theatre-s6.jpg"], "vibrant-meridian": ["img/vibrant-meridian-s1.jpg", "img/vibrant-meridian-s2.jpg", "img/vibrant-meridian-s3.jpg", "img/vibrant-meridian-s4.jpg", "img/vibrant-meridian-s5.jpg", "img/vibrant-meridian-s6.jpg", "img/vibrant-meridian-s7.jpg", "img/vibrant-meridian-s8.jpg"], "emanativ": ["img/emanativ-s1.jpg", "img/emanativ-s2.jpg", "img/emanativ-s3.jpg", "img/emanativ-s4.jpg", "img/emanativ-s5.jpg", "img/emanativ-s6.jpg"], "embraced-loop": ["img/embraced-loop-s1.jpg", "img/embraced-loop-s2.jpg", "img/embraced-loop-s3.jpg", "img/embraced-loop-s4.jpg", "img/embraced-loop-s5.jpg", "img/embraced-loop-s6.jpg"], "peaceful-journey": ["img/peaceful-journey-s1.jpg", "img/peaceful-journey-s2.jpg", "img/peaceful-journey-s3.jpg", "img/peaceful-journey-s4.jpg", "img/peaceful-journey-s5.jpg", "img/peaceful-journey-s6.jpg", "img/peaceful-journey-s7.jpg", "img/peaceful-journey-s8.jpg", "img/peaceful-journey-s9.jpg"], "whale-shark": ["img/whale-shark-s1.jpg", "img/whale-shark-s2.jpg", "img/whale-shark-s3.jpg", "img/whale-shark-s4.jpg", "img/whale-shark-s5.jpg", "img/whale-shark-s6.jpg", "img/whale-shark-s7.jpg", "img/whale-shark-s8.jpg"], "sunlit-ranch": ["img/sunlit-ranch-s1.jpg", "img/sunlit-ranch-s2.jpg", "img/sunlit-ranch-s3.jpg", "img/sunlit-ranch-s4.jpg", "img/sunlit-ranch-s5.jpg", "img/sunlit-ranch-s6.jpg", "img/sunlit-ranch-s7.jpg", "img/sunlit-ranch-s8.jpg"], "catharsis": ["img/catharsis-rm1.jpg", "img/catharsis-rm2.jpg", "img/catharsis-rm3.jpg", "img/catharsis-rm4.jpg", "img/catharsis-rm5.jpg", "img/catharsis-rm6.jpg"], "parker-slide": ["img/parker-slide-rm1.jpg", "img/parker-slide-rm2.jpg", "img/parker-slide-rm3.jpg", "img/parker-slide-rm4.jpg", "img/parker-slide-rm5.jpg"], "nemus": ["img/nemus-rm1.jpg", "img/nemus-rm2.jpg", "img/nemus-rm3.jpg", "img/nemus-rm4.jpg", "img/nemus-rm5.jpg", "img/nemus-rm6.jpg", "img/nemus-rm7.jpg", "img/nemus-rm8.jpg"], "galaxia": ["img/galaxia-rm1.jpg", "img/galaxia-rm2.jpg", "img/galaxia-rm3.jpg", "img/galaxia-rm4.jpg", "img/galaxia-rm5.jpg", "img/galaxia-rm6.jpg", "img/galaxia-rm7.jpg", "img/galaxia-rm8.jpg"], "gats-head": ["img/gats-head-s1.jpg", "img/gats-head-s2.jpg", "img/gats-head-s3.jpg", "img/gats-head-s4.jpg"], "worlds-away": ["img/worlds-away-s1.jpg", "img/worlds-away-s2.jpg", "img/worlds-away-s3.jpg", "img/worlds-away-s4.jpg", "img/worlds-away-s5.jpg", "img/worlds-away-s6.jpg"], "u-basket-chapel": ["img/u-basket-chapel-20261103-1.jpg", "img/u-basket-chapel-20261103-2.jpg", "img/u-basket-chapel-20261103-3.jpg"], "u-outstretched-hand": ["img/u-outstretched-hand-20261103-1.jpg", "img/u-outstretched-hand-20261103-2.jpg"], "u-temple-of-allegory": ["img/u-temple-of-allegory-20261103-1.jpg"], "u-ashland-plaza": ["img/u-ashland-plaza-20261103-1.jpg", "img/u-ashland-plaza-20261103-2.jpg"], "u-pettersen-memorial": ["img/u-pettersen-memorial-20261103-1.jpg"], "u-civic-tides": ["img/u-civic-tides-20261103-1.jpg", "img/u-civic-tides-20261103-2.jpg"], "u-coachman-park": ["img/u-coachman-park-20261103-1.jpg", "img/u-coachman-park-20261103-2.jpg"], "u-fxbg-obelisk": ["img/u-fxbg-obelisk-20261103-1.jpg", "img/u-fxbg-obelisk-20261103-2.jpg"], "u-faena": ["img/u-faena-20261103-1.jpg", "img/u-faena-20261103-2.jpg"], "u-milpitas-markers": ["img/u-milpitas-markers-20261103-1.jpg"], "u-nashville": ["img/u-nashville-20261103-1.jpg", "img/u-nashville-20261103-2.jpg"], "u-orlando-agate": ["img/u-orlando-agate-20261103-1.jpg", "img/u-orlando-agate-20261103-2.jpg"], "u-tacstil": ["img/u-tacstil-20261103-1.jpg", "img/u-tacstil-20261103-2.jpg"], "u-chroma-loop-wichita": ["img/u-chroma-loop-wichita-20261103-1.jpg"], "p-barker-hangar": ["img/p-barker-hangar-20261103-1.jpg"], "p-netflix-lounge": ["img/p-netflix-lounge-20261103-1.jpg", "img/p-netflix-lounge-20261103-2.jpg"], "p-staud-montauk": ["img/p-staud-montauk-20261103-1.jpg"], "p-sukeban-anime-expo": ["img/p-sukeban-anime-expo-20261103-1.jpg", "img/p-sukeban-anime-expo-20261103-2.jpg"], "p-gcfa-dinner": ["img/p-gcfa-dinner-20261103-1.jpg", "img/p-gcfa-dinner-20261103-2.jpg"], "p-hop-concepts": ["img/p-hop-concepts-20261103-1.jpg", "img/p-hop-concepts-20261103-2.jpg"], "p-playbill-coach": ["img/p-playbill-coach-20261103-1.jpg"], "p-sukeban-la-2024": ["img/p-sukeban-la-2024-20261103-1.jpg", "img/p-sukeban-la-2024-20261103-2.jpg"], "p-sukeban-london": ["img/p-sukeban-london-20261103-1.jpg"], "u-brisbane-loop-bench": ["img/u-brisbane-loop-bench-20261103-1.jpg", "img/u-brisbane-loop-bench-20261103-2.jpg"], "u-chateau": ["img/u-chateau-20261103-1.jpg"], "u-nsu-facade-panels": ["img/u-nsu-facade-panels-20261103-1.jpg", "img/u-nsu-facade-panels-20261103-2.jpg"], "u-posy-park": ["img/u-posy-park-20261103-1.jpg", "img/u-posy-park-20261103-2.jpg"], "u-sbtv-art-basel": ["img/u-sbtv-art-basel-20261103-1.jpg", "img/u-sbtv-art-basel-20261103-2.jpg"], "u-sonar-axis": ["img/u-sonar-axis-20261103-1.jpg", "img/u-sonar-axis-20261103-2.jpg"], "fab-fest": ["img/fab-fest-1.jpg", "img/fab-fest-2.jpg", "img/fab-fest-3.jpg", "img/fab-fest-4.jpg", "img/fab-fest-5.jpg", "img/fab-fest-6.jpg", "img/fab-fest-7.jpg", "img/fab-fest-8.jpg"], "u-uv-lab-concept-one": ["img/u-uv-lab-concept-one-1.jpg", "img/u-uv-lab-concept-one-2.jpg"], "u-we-belong-together": ["img/u-we-belong-together-1.jpg"], "doll": ["img/doll-20261110-1.jpg", "img/doll-20261110-2.jpg", "img/doll-20261110-3.jpg"], "u-ars-bench": ["img/u-ars-bench-20261110-1.jpg", "img/u-ars-bench-20261110-2.jpg", "img/u-ars-bench-20261110-3.jpg"], "u-ars-tree": ["img/u-ars-tree-20261110-1.jpg", "img/u-ars-tree-20261110-2.jpg"], "u-milk-crate": ["img/u-milk-crate-20261110-1.jpg", "img/u-milk-crate-20261110-2.jpg", "img/u-milk-crate-20261110-3.jpg", "img/u-milk-crate-20261110-4.jpg"], "p-canada-goose": ["img/p-canada-goose-20261110-1.jpg", "img/p-canada-goose-20261110-2.jpg", "img/p-canada-goose-20261110-3.jpg"], "p-bel-air-wedding": ["img/p-bel-air-wedding-20261110-1.jpg", "img/p-bel-air-wedding-20261110-2.jpg", "img/p-bel-air-wedding-20261110-3.jpg", "img/p-bel-air-wedding-20261110-4.jpg"], "p-sukeban-miami": ["img/p-sukeban-miami-20261110-1.jpg", "img/p-sukeban-miami-20261110-2.jpg", "img/p-sukeban-miami-20261110-3.jpg", "img/p-sukeban-miami-20261110-4.jpg"], "p-tesla-cybertruck": ["img/p-tesla-cybertruck-20261110-1.jpg", "img/p-tesla-cybertruck-20261110-2.jpg", "img/p-tesla-cybertruck-20261110-3.jpg", "img/p-tesla-cybertruck-20261110-4.jpg", "img/p-tesla-cybertruck-20261110-5.jpg"], "p-tesla-semi": ["img/p-tesla-semi-1.jpg", "img/p-tesla-semi-2.jpg", "img/p-tesla-semi-3.jpg", "img/p-tesla-semi-4.jpg", "img/p-tesla-semi-5.jpg", "img/p-tesla-semi-6.jpg"]};         // id -> [atlas image paths], first = current hero
 const ATLAS_BASE = 'https://atlas.studioartsupportservices.com/';
 const webUrl = (p, w) => SITE_BASE + p + (w ? '?format=' + w : '');
-let mode = 'pick';
+let mode = 'pick', srcFilter = 'all';
 const PICKS_PATH = ['Completed Work', 'Atlas'];
 const PICKS_FILE = 'photo-picks.json';
 const LOW = 2000;            // long side below this is flagged as low resolution
@@ -422,7 +423,7 @@ function renderMain() {
     m.innerHTML = '<div class="empty"><h2>Pick the photos for each project</h2>'
       + '<ol><li>Connect <b>Info and Assets</b> (My Drive › Applications Master Folder › Info and Assets) and, for Lips / Hope Peace / Individuality, <b>B180 Complete</b> (Shared drives › B180 Project folders › Complete). The browser asks once per session.</li>'
       + '<li>Choose a project on the left. Every photo in its folders appears with its real size; anything under ' + LOW + 'px on the long side is flagged <b style="color:var(--warn)">LOW-RES</b>.</li>'
-      + '<li>Click <b style="color:var(--web)">Website</b> and/or <b style="color:var(--atlas)">Atlas</b> on the photos you want, in the order you want them. ★ marks the cover. Tick <b style="color:var(--proc)">Process photo</b> for build/process shots: they go on the website page in a Process section below the finished photos, never on the Atlas. Drag in the strips at the top to reorder.</li>'
+      + '<li>To add new photos, open a project and click <b>⬆ Upload photos</b> (or drag photos from your computer onto the window). They are copied into that project&#39;s folder in Drive.</li><li>Click <b style="color:var(--web)">Website</b> and/or <b style="color:var(--atlas)">Atlas</b> on the photos you want, in the order you want them. ★ marks the cover. Tick <b style="color:var(--proc)">Process photo</b> for build/process shots: they go on the website page in a Process section below the finished photos, never on the Atlas. Drag in the strips at the top to reorder.</li>'
       + '<li>Mark the project <b>Ready</b>. Picks save automatically to <code>Completed Work › Atlas › photo-picks.json</code>; tell Claude when you’re done and the full-resolution originals get processed and deployed.</li></ol>'
       + '<div class="btns">' + (rootOk.IA ? '' : '<button class="btn primary" type="button" data-connect="IA">Connect Info and Assets</button>') + (rootOk.B180 ? '' : '<button class="btn" type="button" data-connect="B180">Connect B180 Complete</button>') + '</div></div>';
     return;
@@ -443,15 +444,17 @@ async function openProject(id) {
   }
   if (current !== id) return;
   const site = SITE[id];
+  const webFiles = [];
   if (site) {
     const names = new Set(files.map((f) => f.name.toLowerCase().replace(/\.[^.]+$/, '')));
     for (const x of [...site.bg, ...site.g]) {
       const path = 'WEB:' + x; if (files.some((f) => f.path === path)) continue;
       const nm = decodeURIComponent(x.split('/').pop().replace(/\+/g, ' '));
       const f = fileIndex.get(path) || { path, name: nm, folder: 'On the website now', web: x, dupe: names.has(nm.toLowerCase().replace(/\.[^.]+$/, '')) };
-      fileIndex.set(path, f); files.push(f);
+      fileIndex.set(path, f); webFiles.push(f);
     }
   }
+  files = [...webFiles, ...files];
   const seen = new Set(); files = files.filter((f) => !seen.has(f.path) && seen.add(f.path));
   $('#folders').innerHTML = (specs.length ? 'Folders: ' + specs.map((x) => '<b>' + esc(x.replace(/^IA:/, '').replace(/^B180:/, 'B180 › ')) + '</b>').join(' · ') : 'No folder linked yet.') + (notes.length ? '<br>' + notes.join('<br>') : '') + ' · ' + files.length + ' photos';
   $('#loading').remove();
@@ -460,13 +463,16 @@ async function openProject(id) {
 function headHtml(p, s) {
   return '<div class="phead"><div class="row"><h2>' + esc(p.title) + '</h2><span class="meta">' + esc([p.kind, p.year, p.place].filter(Boolean).join(' · ')) + '</span>'
     + (p.web ? '<a href="' + esc(p.web) + '" target="_blank" rel="noopener">website page ↗</a>' : '')
-    + '<span class="sp"></span><button class="btn" type="button" id="addFolder">+ Add folder</button><button type="button" class="ready-tg' + (s.ready ? ' on' : '') + '" id="readyTg">' + (s.ready ? '✓ Ready' : 'Mark ready') + '</button></div>'
+    + '<span class="sp"></span><button class="btn primary" type="button" id="upBtn" title="Copy photos from your computer into this project&#39;s folder">⬆ Upload photos</button><input type="file" id="upInput" multiple accept="image/*,.heic,.heif,.tif,.tiff" hidden><button class="btn" type="button" id="addFolder">+ Add folder</button><button type="button" class="ready-tg' + (s.ready ? ' on' : '') + '" id="readyTg">' + (s.ready ? '✓ Ready' : 'Mark ready') + '</button></div>'
     + '<div class="folders" id="folders"></div>'
-    + '<div class="toolbar"><label>Show <select id="vf"><option value="all">All photos</option><option value="sel">Picked only</option><option value="unsel">Not picked</option><option value="hi">Hide low-res</option></select></label>'
+    + '<div class="toolbar"><label>Show <select id="vf"><option value="all">All photos</option><option value="sel">Picked only</option><option value="unsel">Not picked</option><option value="hi">Hide low-res</option></select></label><label>Source <select id="srcf"><option value="all">Drive + website</option><option value="drive">In Drive</option><option value="web">On the website now</option></select></label>'
     + '<label>Sort <select id="sb"><option value="folder">Folder order</option><option value="big">Largest first</option><option value="new">Newest first</option><option value="name">Name</option></select></label>'
     + '<input class="note" id="note" placeholder="Notes for Claude (credits, captions, what to avoid)…" value="' + esc(s.note || '') + '" style="flex:1;min-width:240px"></div></div>';
 }
 function bindHead(p, s) {
+  $('#srcf').value = srcFilter; $('#srcf').onchange = (e) => { srcFilter = e.target.value; shown = PAGE; renderGrid(); };
+  $('#upBtn').onclick = () => $('#upInput').click();
+  $('#upInput').onchange = (e) => { const fs = [...e.target.files]; e.target.value = ''; if (fs.length) uploadFiles(p, s, fs); };
   $('#vf').value = viewFilter; $('#sb').value = sortBy;
   $('#vf').onchange = (e) => { viewFilter = e.target.value; shown = PAGE; renderGrid(); };
   $('#sb').onchange = (e) => { sortBy = e.target.value; shown = PAGE; renderGrid(); };
@@ -519,6 +525,7 @@ function visibleFiles() {
   if (viewFilter === 'sel') v = v.filter((f) => s.web.includes(f.path) || s.atlas.includes(f.path) || s.process.includes(f.path));
   if (viewFilter === 'unsel') v = v.filter((f) => !s.web.includes(f.path) && !s.atlas.includes(f.path) && !s.process.includes(f.path));
   if (viewFilter === 'hi') v = v.filter((f) => !(f.w && Math.max(f.w, f.h) < LOW));
+  if (srcFilter === 'drive') v = v.filter((f) => !f.web); else if (srcFilter === 'web') v = v.filter((f) => f.web);
   if (sortBy === 'big') v.sort((a, b) => (Math.max(b.w || 0, b.h || 0) - Math.max(a.w || 0, a.h || 0)) || ((b.size || 0) - (a.size || 0)));
   if (sortBy === 'new') v.sort((a, b) => (b.mtime || 0) - (a.mtime || 0));
   if (sortBy === 'name') v.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
@@ -628,6 +635,39 @@ $('#main').addEventListener('click', (e) => {
   const r = e.target.closest('[data-reset]'); if (r) { const s = P(r.dataset.id); if (r.dataset.reset === 'a') s.heroAtlas = null; else s.heroWeb = null; changed(); renderHero(); }
 });
 $('#btnHero').onclick = () => { mode = 'hero'; current = null; $('#btnHero').classList.add('primary'); renderList(); renderHero(); };
+
+
+// ---------- upload from computer into the project's folder
+function uploadTarget(p, s) {
+  const spec = [...p.src, ...(s.folders || [])].find((x) => !/\/Archive\//.test(x));
+  if (spec) return spec;
+  const kindRoot = p.kind === 'Unrealized' ? 'IA:Unrealized Projects/Project Descriptions/' : p.kind === 'Production' ? 'IA:Production/' : 'IA:Completed Work/Project Images/';
+  return kindRoot + p.title.replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 80);
+}
+async function uploadFiles(p, s, list) {
+  const imgs = list.filter((f) => IMG_RE.test(f.name));
+  if (!imgs.length) return toast('No photos in that selection (JPG, PNG, WEBP, HEIC, TIFF).');
+  const spec = uploadTarget(p, s); const [key, rel] = spec.split(/:(.*)/s);
+  if (!roots[key]) return toast('Connect ' + (key === 'IA' ? 'Info and Assets' : 'B180 Complete') + ' first.');
+  try { if ((await roots[key].queryPermission({ mode: 'readwrite' })) !== 'granted' && (await roots[key].requestPermission({ mode: 'readwrite' })) !== 'granted') return toast('The app needs permission to save into that folder.'); }
+  catch (e) { return toast(e.message); }
+  let dir; try { dir = await dirAt(roots[key], rel.split('/'), true); } catch (e) { return toast('Couldn’t open ' + rel + ': ' + e.message); }
+  const existing = new Set(); for await (const [n] of dir.entries()) existing.add(n.toLowerCase());
+  let done = 0;
+  for (const f of imgs) {
+    let name = f.name, i = 2; const dot = name.lastIndexOf('.'), base = dot > 0 ? name.slice(0, dot) : name, ext = dot > 0 ? name.slice(dot) : '';
+    while (existing.has(name.toLowerCase())) name = base + ' (' + (i++) + ')' + ext;
+    existing.add(name.toLowerCase());
+    try { const fh = await dir.getFileHandle(name, { create: true }); const w = await fh.createWritable(); await w.write(f); await w.close(); done++; toast('Uploading ' + done + ' of ' + imgs.length + '…'); }
+    catch (e) { toast('Couldn’t save ' + f.name + ': ' + e.message); }
+  }
+  if (!p.src.includes(spec) && !(s.folders || []).includes(spec)) { s.folders.push(spec); changed(); }
+  toast(done + ' photo' + (done === 1 ? '' : 's') + ' saved to ' + rel.split('/').slice(-2).join(' › '));
+  openProject(p.id);
+}
+document.addEventListener('dragover', (e) => { if (mode === 'pick' && current && e.dataTransfer && [...e.dataTransfer.types].includes('Files')) { e.preventDefault(); document.body.classList.add('dropping'); } });
+document.addEventListener('dragleave', (e) => { if (!e.relatedTarget) document.body.classList.remove('dropping'); });
+document.addEventListener('drop', (e) => { document.body.classList.remove('dropping'); if (mode !== 'pick' || !current || !e.dataTransfer || !e.dataTransfer.files.length) return; e.preventDefault(); uploadFiles(proj(current), P(current), [...e.dataTransfer.files]); });
 
 // ---------- events
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 3800); }
