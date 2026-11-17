@@ -78,7 +78,7 @@ window.__dep = async function (o) {
         if (o.noReload) { S.done = true; return 'reload'; } location.href = '/config/pages?frameUrl=%2F' + o.slug; return 'reload';
       }
     }
-    if (o.nWeb > 0) { const r = await fillGallery(gal.id, o.web, '-', new RegExp(o.pid + '-w\\d')); log('web ' + JSON.stringify(r)); }
+    if (o.nWeb > 0) { const tg = o.tag ? o.tag + '-' : ''; const r = await fillGallery(gal.id, o.web, '-' + tg, new RegExp(o.pid + '-' + tg + 'w\\d')); log('web ' + JSON.stringify(r)); }
     if (o.nProc > 0 && procGalId) { const r = await fillGallery(procGalId, o.proc, '-process-', new RegExp(o.pid + '-process-p\\d')); log('proc ' + JSON.stringify(r)); }
     if (o.hero && hdr && hdr.backgroundImageId) {
       tb(hdr.id, 'settings').click(); await sleep(2000);
