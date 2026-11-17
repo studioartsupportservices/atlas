@@ -1,0 +1,116 @@
+{
+ "pid": "muse",
+ "web": [
+  {
+   "src": "WEB:f65c99fb-0ac8-47c2-816b-5f3cc369bef2/1+%284%29.jpeg",
+   "file": "w01.jpg",
+   "w": 900,
+   "h": 1600
+  },
+  {
+   "src": "WEB:6b38ab05-d7b3-4cc1-a7b8-12965a7ae1c9/1+%287%29.jpeg",
+   "file": "w02.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 12.50.27 (2).jpeg",
+   "file": "w03.jpg",
+   "w": 739,
+   "h": 1600
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 12.53.21.jpeg",
+   "file": "w04.jpg",
+   "w": 768,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 12.53.22 (2).jpeg",
+   "file": "w05.jpg",
+   "w": 768,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 13.57.40 (1) (2).jpeg",
+   "file": "w06.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 13.57.41 (1).jpeg",
+   "file": "w07.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 13.57.41 (2).jpeg",
+   "file": "w08.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 13.57.41.jpeg",
+   "file": "w09.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 13.57.42 (1).jpeg",
+   "file": "w10.jpg",
+   "w": 2048,
+   "h": 1536
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Muse/WhatsApp Image 2026-10-14 at 13.57.42.jpeg",
+   "file": "w11.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Archive/Muse/renders/Enscape_2025-08-17-21-10-26.png",
+   "file": "w12.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/Muse/PHOTO-2025-08-06-20-59-50.jpg",
+   "file": "p01.jpg",
+   "w": 1477,
+   "h": 822
+  },
+  {
+   "src": "IA:Completed Work/Archive/Muse/renders/Enscape_2025-08-17-20-56-23.png",
+   "file": "p02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Muse/renders/Enscape_2025-08-17-21-03-05.png",
+   "file": "p03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Muse/renders/Enscape_2025-08-17-21-20-58.png",
+   "file": "p04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Muse/renders/Enscape_2025-08-17-21-40-12.png",
+   "file": "p05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:acf4c42e-18b8-47ce-a324-fcd5599babb2/1+%282%29.jpeg",
+   "file": "p06.jpg",
+   "w": 900,
+   "h": 1600
+  }
+ ],
+ "hero": null
+}

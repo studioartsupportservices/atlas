@@ -1,0 +1,108 @@
+{
+ "pid": "lesvos-playground",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Lesvos Playground/IMG-20251028-WA0018.jpg",
+   "file": "w01.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/IMG-20251028-WA0014.jpg",
+   "file": "w02.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/IMG-20251028-WA0013.jpg",
+   "file": "w03.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Lesvos Playground/IMG-20251028-WA0019.jpg",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/IMG-20251028-WA0016.jpg",
+   "file": "w05.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/IMG-20251028-WA0017.jpg",
+   "file": "w06.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/IMG-20251028-WA0020.jpg",
+   "file": "w07.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/IMG-20251028-WA0021.jpg",
+   "file": "w08.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/pics/WhatsApp Image 2025-10-28 at 23.32.18_e0b7e7c6.jpg",
+   "file": "w09.jpg",
+   "w": 1875,
+   "h": 2500
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-04-02-14-04-24.png",
+   "file": "p01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-04-02-14-08-14.png",
+   "file": "p02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-04-02-14-07-57.png",
+   "file": "p03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-05-07-18-41-53.png",
+   "file": "p04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-04-02-14-07-10.png",
+   "file": "p05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-04-02-14-07-33.png",
+   "file": "p06.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Lesvos Playground/render 1/Enscape_2025-05-07-18-43-25.png",
+   "file": "p07.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "hero": {
+  "src": "25bd5e5d-0370-4aeb-99e2-40b2a18380ec/IMG-20251028-WA0014.jpg",
+  "w": 1875,
+  "h": 2500
+ }
+}

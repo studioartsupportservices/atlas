@@ -1,0 +1,56 @@
+{
+ "pid": "catharsis",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Catharsis/catharsis09.jpg",
+   "file": "w01.jpg",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Catharsis/catharsis04.jpg",
+   "file": "w02.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Catharsis/catharsis11.jpg",
+   "file": "w03.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Catharsis/catharsis03.jpg",
+   "file": "w04.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "WEB:1780073765413-AG7CZSMBADWERG1C6MVF/Photo+Dec+05+2022%2C+11+08+44.jpg",
+   "file": "w05.jpg",
+   "w": 1080,
+   "h": 711
+  },
+  {
+   "src": "WEB:1780073765355-8HJ5XM3WZ88HB245RMQW/Photo+Dec+05+2022%2C+11+07+50.jpg",
+   "file": "w06.jpg",
+   "w": 1200,
+   "h": 1600
+  },
+  {
+   "src": "WEB:1780073765397-RX8Z3BTYIGU3KBMH0Z11/Photo+Dec+05+2022%2C+11+08+38.jpg",
+   "file": "w07.jpg",
+   "w": 1600,
+   "h": 720
+  }
+ ],
+ "process": [
+  {
+   "src": "WEB:1780073765299-9SM95R9FSYIWZGE0Q8EE/Photo+Dec+05+2022%2C+11+08+16.jpg",
+   "file": "p01.jpg",
+   "w": 1200,
+   "h": 1600
+  }
+ ],
+ "hero": null
+}

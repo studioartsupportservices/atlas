@@ -1,0 +1,68 @@
+{
+ "pid": "peaceful-journey",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Peaceful Journey/peacefuljourney04.jpeg",
+   "file": "w01.jpg",
+   "w": 600,
+   "h": 900
+  },
+  {
+   "src": "WEB:1780073761277-7A02BCSCGP4QB1NFDX3Q/UNDER+1.jpg",
+   "file": "w02.jpg",
+   "w": 2500,
+   "h": 1316
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Peaceful Journey/peacefuljourney03.jpeg",
+   "file": "w03.jpg",
+   "w": 900,
+   "h": 600
+  },
+  {
+   "src": "WEB:1780073761301-RD19XQJ5CZA5DDYBBETS/UNDER+2.jpg",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1316
+  },
+  {
+   "src": "WEB:1780073761337-CXT5VUIJ015W8QR97P6S/DSC00091.png",
+   "file": "w05.jpg",
+   "w": 1200,
+   "h": 1800
+  },
+  {
+   "src": "WEB:1780073761374-B4SV3AXIWRXT9G40RLU2/DSC00055.png",
+   "file": "w06.jpg",
+   "w": 600,
+   "h": 900
+  }
+ ],
+ "process": [
+  {
+   "src": "WEB:1780073761319-D6COD121Y1RSR0SFF1GI/elevation+fin.jpg",
+   "file": "p01.jpg",
+   "w": 1745,
+   "h": 1561
+  },
+  {
+   "src": "WEB:1780073761355-8U9WB74IJGTHT4G8R3GY/IMG_7642.JPG",
+   "file": "p02.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073761447-XUUB71OLZ954QFDPG8DO/SECTION_GRND.jpg",
+   "file": "p03.jpg",
+   "w": 2500,
+   "h": 1607
+  },
+  {
+   "src": "WEB:1780073761239-4IETJ07KO6YIR93J54GJ/DSC00627.JPG",
+   "file": "p04.jpg",
+   "w": 2500,
+   "h": 1667
+  }
+ ],
+ "hero": null
+}

@@ -1,0 +1,74 @@
+{
+ "pid": "embraced-loop",
+ "web": [
+  {
+   "src": "WEB:1780073755055-9CGDNHN19S022CWFA244/WhatsApp+Image+2024-03-20+at+22.03.27_db554b17.jpg",
+   "file": "w01.jpg",
+   "w": 1594,
+   "h": 1600
+  },
+  {
+   "src": "WEB:1780073755116-L3RTVEIGD27736ZEXCUB/WhatsApp+Image+2024-03-20+at+22.03.33_e9284497.jpg",
+   "file": "w02.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073755073-1UZFVZRRHVBTM090XHO8/WhatsApp+Image+2024-03-20+at+22.03.33_144cd8e8.jpg",
+   "file": "w03.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073755095-LGLQCJAHXYIEIDT8HMOH/WhatsApp+Image+2024-03-20+at+22.03.33_7239e4fc.jpg",
+   "file": "w04.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Embraced Loop/hivaidsmemorial02.jpg",
+   "file": "w05.jpg",
+   "w": 1500,
+   "h": 1000
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/Embraced Loop/IMG_3927.JPG",
+   "file": "p01.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Embraced Loop/IMG_3940.JPG",
+   "file": "p02.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Embraced Loop/wetransfer_img_3821-jpg_2023-11-04_1844/IMG_3821.JPG",
+   "file": "p03.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Embraced Loop/wetransfer_img_3821-jpg_2023-11-04_1844/IMG_3836.JPG",
+   "file": "p04.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Embraced Loop/wetransfer_img_3821-jpg_2023-11-04_1844/IMG_3847.JPG",
+   "file": "p05.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Embraced Loop/wetransfer_img_3821-jpg_2023-11-04_1844/IMG_3845.JPG",
+   "file": "p06.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "hero": null
+}

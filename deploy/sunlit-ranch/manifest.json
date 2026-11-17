@@ -1,0 +1,55 @@
+{
+ "pid": "sunlit-ranch",
+ "web": [
+  {
+   "src": "WEB:1780073733247-N04C0ZJMEURPJQ0UF04L/Enscape_2023-10-24-12-16-41_Enscape+named+view+21.png",
+   "file": "w01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733152-PZUB9ATC70MO63L6DM24/Enscape_2023-10-24-12-37-09_Enscape+named+view+29.png",
+   "file": "w02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733295-RZI9KFNJXET9YUV1U8KA/Enscape_2023-10-16-16-19-59_Enscape+named+view+1.png",
+   "file": "w03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733202-H4DO47MWBTOH5AGQ3XDN/Enscape_2023-10-24-12-37-09_Enscape+named+view+17.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733309-8TYN215SBRQBC4TZP159/Enscape_2023-10-24-12-37-09_Enscape+named+view+27.png",
+   "file": "w05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733349-9IY3SPG6N6WP92E8J73W/Enscape_2023-10-24-12-37-09_Enscape+named+view+28.png",
+   "file": "w06.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733233-D3J7J3DXMERJQT7826NE/Enscape_2023-10-16-16-19-59_Enscape+named+view+5.png",
+   "file": "w07.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073733184-MIG9BQLQVHB7CB83OPZM/Enscape_2023-10-16-16-19-59_Enscape+named+view+2.png",
+   "file": "w08.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

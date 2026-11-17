@@ -1,0 +1,91 @@
+{
+ "pid": "noun0",
+ "web": [
+  {
+   "src": "WEB:d1e1a9b3-ff6d-421b-9d04-afaacb2b219e/9e1d34e86bb2a929b6434689adc36b18f5fc8370-874x946.webp",
+   "file": "w01.jpg",
+   "w": 874,
+   "h": 946
+  },
+  {
+   "src": "WEB:98bf622b-3f50-47b9-979e-bfb71e5219ea/15e81d9c559858226f56af53e204d8c9f07d8eb6-864x498.webp",
+   "file": "w02.jpg",
+   "w": 864,
+   "h": 498
+  },
+  {
+   "src": "WEB:f2ba3e09-3d79-4f70-92c5-be5b56b8e5a1/38aa2f9927136586eed50520935671c5dd8d5961-1290x833.jpg",
+   "file": "w03.jpg",
+   "w": 1290,
+   "h": 833
+  },
+  {
+   "src": "WEB:51c6e6c0-1476-400e-9786-6174ca0e15b7/172a7853cc7a33557c2613ee329f5c7ba82fdb7e-970x1144.webp",
+   "file": "w04.jpg",
+   "w": 970,
+   "h": 1144
+  },
+  {
+   "src": "WEB:d7641dc5-a3ea-4a24-abf3-658dd78c5c4a/b7e4421372c29bbd88608b778a559640abdb1e50-1577x1142.webp",
+   "file": "w05.jpg",
+   "w": 1577,
+   "h": 1142
+  },
+  {
+   "src": "WEB:bd6872b1-cb47-4c31-95f7-0a9f227d38d2/d98ff15976d95248949ad4542a1b1d6dadb1aa7a-915x1034.webp",
+   "file": "w06.jpg",
+   "w": 915,
+   "h": 1034
+  },
+  {
+   "src": "WEB:eee33995-578f-4532-813a-b1152d15e10e/PHOTO-2025-09-26-12-15-14+%282%29.jpg",
+   "file": "w07.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "WEB:6bbc2830-d2f9-424a-9ecd-61522f069fca/PHOTO-2025-09-26-12-15-14+%281%29.jpg",
+   "file": "w08.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "WEB:44b96578-70a2-48ff-8c7f-4dc1922c5c89/PHOTO-2025-09-26-12-15-14.jpg",
+   "file": "w09.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Noun 0/Render tiles/Enscape_2025-02-04-11-26-12.png",
+   "file": "w10.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Noun 0/Render tiles/Enscape_2025-02-04-11-26-33.png",
+   "file": "w11.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Noun 0/Render tiles/Enscape_2025-02-04-11-30-32.png",
+   "file": "w12.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Noun 0/Render tiles/Enscape_2025-02-04-11-30-49.png",
+   "file": "w13.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Noun 0/renders 1/Enscape_2025-02-03-12-34-02.png",
+   "file": "w14.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

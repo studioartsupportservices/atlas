@@ -1,0 +1,44 @@
+{
+ "pid": "parker-slide",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Parker Slide/parkerslide04.jpg",
+   "file": "w01.jpg",
+   "w": 828,
+   "h": 777
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Parker Slide/parkerslide03.jpg",
+   "file": "w02.jpg",
+   "w": 709,
+   "h": 703
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Parker Slide/parkerslide06.jpeg",
+   "file": "w03.jpg",
+   "w": 391,
+   "h": 592
+  },
+  {
+   "src": "WEB:1780073674640-8H37W453D9S7CR2S4A2A/IMG_1996.jpg",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/Parker Slide/parkerslide01.jpeg",
+   "file": "p01.jpg",
+   "w": 2500,
+   "h": 1148
+  },
+  {
+   "src": "WEB:1780073674629-R1B2KGFEDJZ2MK6HPVXE/IMG_1778.jpg",
+   "file": "p02.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "hero": null
+}

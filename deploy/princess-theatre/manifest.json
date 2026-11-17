@@ -1,0 +1,37 @@
+{
+ "pid": "princess-theatre",
+ "web": [
+  {
+   "src": "WEB:9bf69adf-a83c-4a14-8cd0-2a96a7e280a7/change+the+angle+of+the+view+to+look+at+the+theatre+from+the+other+side+of+the+street+and+the+other+.jpeg",
+   "file": "w01.jpg",
+   "w": 2500,
+   "h": 1395
+  },
+  {
+   "src": "WEB:60f82608-4cbd-4907-b9ec-910cfdee209b/Change+the+time+of+day+to+morning._Change+the+season+to+summer..jpeg",
+   "file": "w02.jpg",
+   "w": 2500,
+   "h": 1395
+  },
+  {
+   "src": "WEB:ac4f3828-f836-4225-b2a8-693fcf1db004/The+Princess+Theatre+in+Tucumcari+features+a+vibrant+art+deco+facade+with+intricate+patterns+of+colo.jpeg",
+   "file": "w03.jpg",
+   "w": 2500,
+   "h": 1395
+  },
+  {
+   "src": "WEB:c3fda153-3852-4a7f-a98f-c40e99a7d260/Scenario+3+Day.png",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1250
+  },
+  {
+   "src": "WEB:5228daa2-7356-4b44-97d8-127f0199be63/An+aerial+urban+view+shows+a+vibrant+and+bustling+Main+Street+in+Tucumcari%2C+New+Mexico%2C+where+the+re+%281%29.jpeg",
+   "file": "w05.jpg",
+   "w": 1584,
+   "h": 672
+  }
+ ],
+ "process": [],
+ "hero": null
+}

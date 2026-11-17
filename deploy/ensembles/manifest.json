@@ -1,0 +1,62 @@
+{
+ "pid": "ensembles",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/ZAT/PHOTO-2025-04-04-18-14-38.jpg",
+   "file": "w01.jpg",
+   "w": 2048,
+   "h": 1536
+  },
+  {
+   "src": "IA:Completed Work/Archive/ZAT/6136787.jpg",
+   "file": "w02.jpg",
+   "w": 522,
+   "h": 700
+  },
+  {
+   "src": "IA:Completed Work/Archive/ZAT/Ensemble-ZAT-UVLAB-15.webp",
+   "file": "w03.jpg",
+   "w": 481,
+   "h": 641
+  },
+  {
+   "src": "IA:Completed Work/Archive/ZAT/Ensemble-ZAT-UVLAB-36.webp",
+   "file": "w04.jpg",
+   "w": 481,
+   "h": 641
+  },
+  {
+   "src": "IA:Completed Work/Archive/ZAT/PHOTO-2025-04-04-17-39-00.jpg",
+   "file": "w05.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Archive/ZAT/PHOTO-2025-04-04-17-39-46.jpg",
+   "file": "w06.jpg",
+   "w": 1536,
+   "h": 2048
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/ZAT/PHOTO-2025-03-29-18-53-32.jpg",
+   "file": "p01.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Project Images/ZAT/PHOTO-2025-03-29-18-53-33.jpg",
+   "file": "p02.jpg",
+   "w": 1536,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Archive/ZAT/PHOTO-2025-03-27-14-57-44.jpg",
+   "file": "p03.jpg",
+   "w": 1152,
+   "h": 2048
+  }
+ ],
+ "hero": null
+}

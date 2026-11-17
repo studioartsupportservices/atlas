@@ -1,0 +1,92 @@
+{
+ "pid": "galaxia",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia12.jpg",
+   "file": "w01.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia01.jpg",
+   "file": "w02.jpg",
+   "w": 1080,
+   "h": 935
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia02.jpg",
+   "file": "w03.jpg",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia05.jpg",
+   "file": "w04.jpg",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia06.jpg",
+   "file": "w05.jpg",
+   "w": 1024,
+   "h": 576
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia09.jpg",
+   "file": "w06.jpg",
+   "w": 936,
+   "h": 527
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia11.jpg",
+   "file": "w07.jpg",
+   "w": 900,
+   "h": 600
+  },
+  {
+   "src": "WEB:1780073763368-EMS4C46G3WJ5UAI80MY5/42750070900_e28434aea2_b.jpg",
+   "file": "w08.jpg",
+   "w": 684,
+   "h": 1024
+  },
+  {
+   "src": "WEB:1780073763412-HUY3ZEN1QW70EDEH8XSK/29649672887_99aa48b103_b.jpg",
+   "file": "w09.jpg",
+   "w": 683,
+   "h": 1024
+  },
+  {
+   "src": "WEB:1780073763206-LN38BRRNWPKPK3PNN61G/44666092071_8e40664815_b.jpg",
+   "file": "w10.jpg",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "src": "WEB:1780073763300-3ON3U90BAH6G2HIRVIWK/44664840481_796c079022_b.jpg",
+   "file": "w11.jpg",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "src": "WEB:1780073763245-MW0BY9OC74YHOJ9UF1KL/IMG_1263.jpg",
+   "file": "w12.jpg",
+   "w": 2048,
+   "h": 1365
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/Galaxia/galaxia15.JPG",
+   "file": "p01.jpg",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073763386-YARE9R3NK50XIGR66PA8/IMG_1499.jpg",
+   "file": "p02.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "hero": null
+}

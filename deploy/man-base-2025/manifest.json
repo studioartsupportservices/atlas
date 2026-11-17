@@ -1,0 +1,92 @@
+{
+ "pid": "man-base-2025",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_04 - Evening Scene of The Man & Pavilion - photo Eleanor Preger.jpg",
+   "file": "w01.jpg",
+   "w": 2048,
+   "h": 1365
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_03 - Lightning and the Burning Man 2025 Man Base by Mark Rivera and the Man - photo Duncan Rawlinson.jpg",
+   "file": "w02.jpg",
+   "w": 2048,
+   "h": 1365
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_07 - A Night with the Man - photo Jon Bookout.jpg",
+   "file": "w03.jpg",
+   "w": 2048,
+   "h": 1365
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_11 - The Man Pavilion Burning, by artist Kidnetick Mark Rivera - photo Mark Fromson.jpg",
+   "file": "w04.jpg",
+   "w": 2048,
+   "h": 1365
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_13 - Night Manager - photo Mattias L\u00f6w.jpg",
+   "file": "w05.jpg",
+   "w": 1366,
+   "h": 2048
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_12 - Lighting the Man - photo Mattias L\u00f6w.jpg",
+   "file": "w06.jpg",
+   "w": 2048,
+   "h": 1366
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_10 - Epic Sunset at the Man Pavilion, by artist Kidnetick MarkRivera - photo Mark Fromson.jpg",
+   "file": "w07.jpg",
+   "w": 2048,
+   "h": 1454
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_19 - Burners Gather at the Man - photo Scott London.jpg",
+   "file": "w08.jpg",
+   "w": 2048,
+   "h": 1366
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_17 - The Man Pavilion 2 - photo Ranny V\u00edquez.jpg",
+   "file": "w09.jpg",
+   "w": 2048,
+   "h": 1428
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/BM25_21 - The World Fair of Unity - photo Scott London.jpg",
+   "file": "w10.jpg",
+   "w": 2048,
+   "h": 1201
+  }
+ ],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/Enscape_2025-04-03-21-08-23.png",
+   "file": "p01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/WhatsApp Image 2026-02-24 at 17.28.10 (1).jpeg",
+   "file": "p02.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Man Base 2025/WhatsApp Image 2026-02-24 at 17.28.18.jpeg",
+   "file": "p03.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "WEB:8e8ef08d-5cbe-40b4-88f0-83068cc192dd/mb25-4-render.jpg",
+   "file": "p04.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "hero": null
+}

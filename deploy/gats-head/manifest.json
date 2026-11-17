@@ -1,0 +1,25 @@
+{
+ "pid": "gats-head",
+ "web": [
+  {
+   "src": "WEB:1780073666608-S9390VZLF1ZNNIFF22B9/IMG_3262.jpg",
+   "file": "w01.jpg",
+   "w": 744,
+   "h": 547
+  },
+  {
+   "src": "WEB:1780073666655-FQVW8ZAR7GXHB1HAL2Y9/IMG_1046.JPG",
+   "file": "w02.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073666675-D2K6NVOOU10UF2UCG6KR/IMG_2490.jpg",
+   "file": "w03.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "process": [],
+ "hero": null
+}

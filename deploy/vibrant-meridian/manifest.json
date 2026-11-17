@@ -1,0 +1,61 @@
+{
+ "pid": "vibrant-meridian",
+ "web": [
+  {
+   "src": "WEB:1780073706500-IZSHHGR6NZHHDOXZBOUJ/DicarloSculpture-01.jpg",
+   "file": "w01.jpg",
+   "w": 2500,
+   "h": 1409
+  },
+  {
+   "src": "IA:Completed Work/Archive/Vibrant Meridian/vibrantmeridian02.jpg",
+   "file": "w02.jpg",
+   "w": 1409,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073706753-8Z87G32PACXIZJ2KIT4L/DicarloSculpture-07.jpg",
+   "file": "w03.jpg",
+   "w": 1668,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073706809-NJOWMUDIX3TNHDCJ9UVT/DicarloSculpture-22-2.jpg",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1409
+  },
+  {
+   "src": "WEB:1780073706550-6OS4KMVFHS9X02XEMDZD/DicarloSculpture-23-Enhanced-NR.jpg",
+   "file": "w05.jpg",
+   "w": 1668,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073706693-EDTEGWJC03JKPEX2TJ6G/DicarloSculpture-45.jpg",
+   "file": "w06.jpg",
+   "w": 2500,
+   "h": 1409
+  },
+  {
+   "src": "WEB:1780073706658-NT6S1WJHNR66TO1KUR4B/DicarloSculpture-43.jpg",
+   "file": "w07.jpg",
+   "w": 2500,
+   "h": 1409
+  },
+  {
+   "src": "WEB:1780073706715-I5LM5YMZM98JX0Q8B0ZI/DicarloSculpture-aerial-08.jpg",
+   "file": "w08.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Vibrant Meridian/vibrantmeridian09.jpg",
+   "file": "w09.jpg",
+   "w": 1500,
+   "h": 2248
+  }
+ ],
+ "process": [],
+ "hero": null
+}

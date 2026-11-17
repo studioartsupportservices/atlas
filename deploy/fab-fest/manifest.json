@@ -1,0 +1,68 @@
+{
+ "pid": "fab-fest",
+ "web": [
+  {
+   "src": "WEB:1780073749933-O01YHSBPJJD84LALESNE/Final+03.jpg",
+   "file": "w01.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073749985-I9EQZGPPVETVUOZU16KP/axono+metric+lines+%5Bedited%5D.jpg",
+   "file": "w02.jpg",
+   "w": 792,
+   "h": 612
+  },
+  {
+   "src": "WEB:1780073750151-7PG3WPDE719S8YMIQ2G1/Exploded+Axon+by+section+%288.5x11%29+5.png",
+   "file": "w03.jpg",
+   "w": 1757,
+   "h": 1029
+  },
+  {
+   "src": "WEB:1780073750023-UHB9SAB6UQ9OSWRYMDIK/Models_3.jpg",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1667
+  },
+  {
+   "src": "WEB:1780073749966-TF18NZVJNA90TOO1YOQ3/Final+05.JPG",
+   "file": "w05.jpg",
+   "w": 2448,
+   "h": 2448
+  },
+  {
+   "src": "WEB:1780073750115-OQOHRK5VAD4J6Q41G2MY/Final+07.jpg",
+   "file": "w06.jpg",
+   "w": 1500,
+   "h": 1125
+  }
+ ],
+ "process": [
+  {
+   "src": "WEB:1780073750004-DDMQHLFE65Y3TX61MT23/Exploded+Axon+w+Cell+C_1_X-fixMimu.jpg",
+   "file": "p01.jpg",
+   "w": 1056,
+   "h": 1201
+  },
+  {
+   "src": "WEB:1780073750234-8LCIW6MH26454MVUV350/SECTIONS++10.12..2016+36X24.jpg",
+   "file": "p02.jpg",
+   "w": 2500,
+   "h": 1667
+  },
+  {
+   "src": "WEB:1780073750270-M5BQJWMQ507T800KAY8B/P1140582+%28EDIT%29.jpg",
+   "file": "p03.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073750197-4RSGWQN9ZU7PQMB5L8QX/P1140606.JPG",
+   "file": "p04.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "hero": null
+}

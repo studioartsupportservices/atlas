@@ -1,0 +1,73 @@
+{
+ "pid": "p-gcfa-dinner",
+ "web": [
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/1_29/Enscape_2024-01-29-17-42-06_Enscape named view 2.png",
+   "file": "w01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/1_29/Enscape_2024-01-29-17-27-19_Enscape named view 17.png",
+   "file": "w02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/1_29/Enscape_2024-01-29-17-42-06_Enscape named view 8.png",
+   "file": "w03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/1_29/take 2/Enscape_2024-01-29-19-32-40_Enscape named view 9.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/1_29/take 2/Enscape_2024-01-29-19-38-05.png",
+   "file": "w05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/1_29/take 2/Enscape_2024-01-29-19-38-45.png",
+   "file": "w06.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/2_22/Enscape_2024-02-22-20-53-04.png",
+   "file": "w07.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/2_22/Enscape_2024-02-22-23-40-06.png",
+   "file": "w08.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/2_28/Enscape_2024-02-28-16-45-54_Enscape named view 5.png",
+   "file": "w09.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/Enscape_2024-01-28-15-18-46_Enscape named view 1.png",
+   "file": "w10.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Green Carpet Fashion Awards/GCFA DRAWINGS/2_28/Enscape_2024-02-28-16-42-30.png",
+   "file": "w11.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

@@ -1,0 +1,38 @@
+{
+ "pid": "whale-shark",
+ "web": [
+  {
+   "src": "WEB:1780073735154-O0TIF7C4LMV2EKJGUY3W/Doha+Whale+Shark.jpg",
+   "file": "w01.jpg",
+   "w": 1440,
+   "h": 1799
+  },
+  {
+   "src": "WEB:1780073735192-E4O3DBW7ENUXYDBZBVO5/319006389_1260662537825834_7901029014585623530_n.jpg",
+   "file": "w02.jpg",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "src": "WEB:1780073735118-L3RWK3ZL2RT6GWMVHZEW/318782738_1510045179483266_832656057593485306_n.jpg",
+   "file": "w03.jpg",
+   "w": 984,
+   "h": 1230
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Suspended Whale Shark/suspendedwhaleshark11.jpeg",
+   "file": "w04.jpg",
+   "w": 768,
+   "h": 1024
+  }
+ ],
+ "process": [
+  {
+   "src": "WEB:1780073735232-KVOVX9AFTCZ8YIHFW2SE/319188855_678647230644790_7401740608883500014_n.jpg",
+   "file": "p01.jpg",
+   "w": 1440,
+   "h": 1800
+  }
+ ],
+ "hero": null
+}

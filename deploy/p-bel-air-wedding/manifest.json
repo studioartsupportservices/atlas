@@ -1,0 +1,73 @@
+{
+ "pid": "p-bel-air-wedding",
+ "web": [
+  {
+   "src": "IA:Production/Bel Air wedding/renders/8_7/pool 1 night.png",
+   "file": "w01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Bel Air wedding/renders/8_7/night bar 1.png",
+   "file": "w02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Bel Air wedding/renders/8_7/day bar 1.png",
+   "file": "w03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Bel Air wedding/renders/8_6/20.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Bel Air wedding/renders/8_1/Enscape_2024-08-01-13-20-47_Enscape named view 27 night.png",
+   "file": "w05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Production/Bel Air wedding/renders/6_28/day/Enscape_2024-06-28-15-03-30_Enscape named view 4.png",
+   "file": "w06.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073746954-DW6C92HHWER6TNUSEB0D/Enscape_2023-11-15-11-52-03_color+1.png",
+   "file": "w07.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073746965-0PT4KLUKH3M7YJWV626B/Enscape_2023-11-27-17-08-42_cropped+2.png",
+   "file": "w08.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073746934-46CRAT3BNBUQ0CG7CBFX/Enscape_2023-11-27-18-43-03_Enscape+named+view+27.png",
+   "file": "w09.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073747150-SU8HANPFAB83NW1OK143/Enscape_2023-11-15-11-43-41_axo+color+night.png",
+   "file": "w10.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073746874-ENJJPA1EXYV2GLJNESC3/Enscape_2023-11-15-11-52-03_Enscape+named+view+6.png",
+   "file": "w11.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

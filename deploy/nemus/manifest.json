@@ -1,0 +1,92 @@
+{
+ "pid": "nemus",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/NEMUS (Strasbourg Pavilion)/get (1).jpeg",
+   "file": "w01.jpg",
+   "w": 1080,
+   "h": 1363
+  },
+  {
+   "src": "IA:Completed Work/Project Images/NEMUS (Strasbourg Pavilion)/get (4).jpeg",
+   "file": "w02.jpg",
+   "w": 1080,
+   "h": 1364
+  },
+  {
+   "src": "IA:Completed Work/Project Images/NEMUS (Strasbourg Pavilion)/get (3).jpeg",
+   "file": "w03.jpg",
+   "w": 1080,
+   "h": 1364
+  },
+  {
+   "src": "WEB:1780073720987-KQLGYN1CFZ4BKPZTMQYS/Enscape_2023-03-07-09-58-12_night+18.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073721037-4VYE2GLKRKDB7BW7BI8B/IMG_8994.JPG",
+   "file": "w05.jpg",
+   "w": 1875,
+   "h": 2500
+  }
+ ],
+ "process": [
+  {
+   "src": "WEB:1780073721160-ET8K6QJA5TJ8S9V1DNJO/E7EE9A8D-2F53-408A-B078-CC7A38D61671.JPG",
+   "file": "p01.jpg",
+   "w": 1407,
+   "h": 2500
+  },
+  {
+   "src": "WEB:1780073721089-DXQMQZGY50XWVI9JVYWL/NOMETON+3A.jpg",
+   "file": "p02.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721128-UM2KOXDHIKNPXDZTGEPL/NOMETON+3B.jpg",
+   "file": "p03.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721018-O2PGZZXCDRBVRWJQBJZG/NOMETON+4.jpg",
+   "file": "p04.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721055-O2L4Q75RFYU5SA0HP8VR/NOMETON+5.jpg",
+   "file": "p05.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721193-ZU5WWMSDGZUGEZKYE3KZ/NOMETON+6.jpg",
+   "file": "p06.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721073-D7PF3BH1TFISKVRC767D/NOMETON+7.jpg",
+   "file": "p07.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721110-CUORXQYIRFF943GR185H/NOMETON+8.jpg",
+   "file": "p08.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:1780073721144-DX11YNUBCNO240LHDTDE/7c299649-3c8c-4ade-988d-6611871dc51a.JPG",
+   "file": "p09.jpg",
+   "w": 2048,
+   "h": 2048
+  }
+ ],
+ "hero": null
+}

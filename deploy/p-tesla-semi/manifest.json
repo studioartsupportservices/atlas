@@ -1,0 +1,61 @@
+{
+ "pid": "p-tesla-semi",
+ "web": [
+  {
+   "src": "WEB:1780073727231-M8C4JKNIPI1XDPZDDGD1/Enscape_2022-11-22-17-38-21_Enscape+named+view+17.png",
+   "file": "w01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727222-I2FMY2VW9WIE0Y420I0K/Enscape_2022-11-22-17-38-21_Enscape+named+view+13.png",
+   "file": "w02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727241-398IRHSHMRZ0MTA0N609/Enscape_2022-11-22-17-38-21_Enscape+named+view+12.png",
+   "file": "w03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727156-731CEPN6JFV5P6DHO2ZT/Enscape_2022-11-26-19-20-22.png",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727251-HUO8UP3M21MDG0DCRKR9/Enscape_2022-11-23-11-37-28_Enscape+named+view+2.png",
+   "file": "w05.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727202-SQJJ70YNLDLPHLBOQEWT/Enscape_2022-11-22-17-38-21_Enscape+named+view+21.png",
+   "file": "w06.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727181-NSPJXFWCZCAXTI3VHJCB/Enscape_2022-11-23-11-37-28_Enscape+named+view+4.png",
+   "file": "w07.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727192-PE8J8MPFEGDTV3NVYMNP/Enscape_2022-11-23-11-37-28_Enscape+named+view+7.png",
+   "file": "w08.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073727261-C7WER0QJUSFBONDXZM6D/Enscape_2022-11-27-13-51-51_Enscape+named+view+31.png",
+   "file": "w09.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

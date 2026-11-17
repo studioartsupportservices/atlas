@@ -1,0 +1,25 @@
+{
+ "pid": "cascode",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Cascode/XS206041.jpeg",
+   "file": "w01.jpg",
+   "w": 1667,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Cascode/XS206043.jpeg",
+   "file": "w02.jpg",
+   "w": 1667,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Cascode/XS206051.jpeg",
+   "file": "w03.jpg",
+   "w": 2500,
+   "h": 1667
+  }
+ ],
+ "process": [],
+ "hero": null
+}

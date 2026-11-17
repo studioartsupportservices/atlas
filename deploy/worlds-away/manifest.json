@@ -1,0 +1,44 @@
+{
+ "pid": "worlds-away",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Worlds Away/worldsaway01.jpeg",
+   "file": "w01.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "WEB:74e3b89c-634c-4dee-a63b-56376659ba89/worldsaway05.jpeg",
+   "file": "w02.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:a71adaec-806f-46e8-97ad-73b38ae93e2a/worldsaway02.jpeg",
+   "file": "w03.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "WEB:332c8651-ae11-41aa-8324-9bb9ba09e593/worldsaway07.jpeg",
+   "file": "w04.jpg",
+   "w": 2500,
+   "h": 1500
+  },
+  {
+   "src": "WEB:2dbfa71f-d27a-4d43-a2fb-5c2d30b8b32d/worldsaway08.jpeg",
+   "file": "w05.jpg",
+   "w": 2500,
+   "h": 1875
+  }
+ ],
+ "process": [
+  {
+   "src": "WEB:e9b91fd1-b1db-479c-a2be-8e5b1e35101b/worldsaway09.jpeg",
+   "file": "p01.jpg",
+   "w": 1883,
+   "h": 2500
+  }
+ ],
+ "hero": null
+}

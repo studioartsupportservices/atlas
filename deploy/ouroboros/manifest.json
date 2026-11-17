@@ -1,0 +1,43 @@
+{
+ "pid": "ouroboros",
+ "web": [
+  {
+   "src": "IA:Completed Work/Project Images/Ouroboros/ouroboros02.JPEG",
+   "file": "w01.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Ouroboros/ouroboros04.jpg",
+   "file": "w02.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Ouroboros/ouroboros06.JPEG",
+   "file": "w03.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Ouroboros/ouroboros08.JPEG",
+   "file": "w04.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Archive/Ouroboros/ouroboros01.JPEG",
+   "file": "w05.jpg",
+   "w": 1500,
+   "h": 1125
+  },
+  {
+   "src": "IA:Completed Work/Archive/Ouroboros/ouroboros03.JPEG",
+   "file": "w06.jpg",
+   "w": 1500,
+   "h": 1125
+  }
+ ],
+ "process": [],
+ "hero": null
+}

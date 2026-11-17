@@ -1,0 +1,37 @@
+{
+ "pid": "emanativ",
+ "web": [
+  {
+   "src": "WEB:1780073712899-TYNVX25QQ8I12JZVHBIH/Enscape_2022-11-08-15-57-01_Enscape+named+view+1.png",
+   "file": "w01.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073712983-368B09CXR26SD0EIBKOF/Enscape_2022-05-02-10-28-43.png",
+   "file": "w02.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073712948-GEJK458VN9XQO2D5GWFQ/Enscape_2022-05-02-10-34-15.png",
+   "file": "w03.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Emanativ/emanitiv02.jpeg",
+   "file": "w04.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "WEB:1780073712999-YPJP5FUHBIO8U9YDAEUF/Enscape_2022-11-08-16-02-26_Enscape+named+view+2.png",
+   "file": "w05.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "process": [],
+ "hero": null
+}

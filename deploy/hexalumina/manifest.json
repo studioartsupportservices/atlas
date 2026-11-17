@@ -1,0 +1,167 @@
+{
+ "pid": "hexalumina",
+ "web": [],
+ "process": [
+  {
+   "src": "IA:Completed Work/Project Images/Hexilumina/PHOTO-2026-03-28-06-59-11.jpg",
+   "file": "p01.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Hexilumina/PHOTO-2026-03-28-06-59-27 (1).jpg",
+   "file": "p02.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-03-23-21-18-07.jpg",
+   "file": "p03.jpg",
+   "w": 2500,
+   "h": 1875
+  },
+  {
+   "src": "IA:Completed Work/Project Images/Hexilumina/PHOTO-2026-03-28-06-59-19.jpg",
+   "file": "p04.jpg",
+   "w": 1875,
+   "h": 2500
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-04-22-15-14-53.jpg",
+   "file": "p05.jpg",
+   "w": 1024,
+   "h": 576
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-05-18-18-12-17.jpg",
+   "file": "p06.jpg",
+   "w": 768,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-05-28-18-24-12 (1) (1).jpg",
+   "file": "p07.jpg",
+   "w": 768,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-05-19-02-22-04.jpg",
+   "file": "p08.jpg",
+   "w": 768,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-07-16-00-12-19.jpg",
+   "file": "p09.jpg",
+   "w": 768,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-07-16-21-22-09 (1).jpg",
+   "file": "p10.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-07-16-21-22-09 (2).jpg",
+   "file": "p11.jpg",
+   "w": 1200,
+   "h": 1600
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-07-16-21-22-09.jpg",
+   "file": "p12.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/PHOTO-2026-06-17-02-14-05.jpg",
+   "file": "p13.jpg",
+   "w": 576,
+   "h": 1024
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-27-29.png",
+   "file": "p14.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-28-29.png",
+   "file": "p15.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-29-29.png",
+   "file": "p16.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-29-04.png",
+   "file": "p17.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-30-45.png",
+   "file": "p18.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-39-36.png",
+   "file": "p19.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-34-58.png",
+   "file": "p20.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-18-31-08.png",
+   "file": "p21.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/Enscape_2025-02-20-19-31-46.png",
+   "file": "p22.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/new/Enscape_2025-06-13-18-13-52.png",
+   "file": "p23.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/new/Enscape_2025-06-13-18-25-55.png",
+   "file": "p24.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/new/Enscape_2025-06-13-18-41-16.png",
+   "file": "p25.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "src": "IA:Completed Work/Archive/Hexilumina/renders/new/Enscape_2025-06-13-18-38-43.png",
+   "file": "p26.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "hero": {
+  "src": "89377b6b-9c59-491c-81ab-2bef0a010581/IMG_6593.jpeg",
+  "w": 2500,
+  "h": 1667
+ }
+}
