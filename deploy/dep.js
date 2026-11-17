@@ -18,10 +18,12 @@ window.__dep = async function (o) {
     await until(() => document.querySelector('input[type=file][multiple]') && items().length >= 0, 10000); await sleep(1500);
     const inp = document.querySelector('input[type=file][multiple]');
     inp.files = await fetchFiles(names, prefix); inp.dispatchEvent(new Event('change', { bubbles: true }));
-    await until(() => srcs().filter((s) => keepRe.test(s)).length >= names.length, 120000);
+    { let last = -1, stable = 0; const t0 = Date.now();
+      while (Date.now() - t0 < 150000) { const c = srcs().filter((s) => keepRe.test(s)).length; if (c >= names.length) break; if (c === last) stable++; else { stable = 0; last = c; } if (stable > 40 && c > 0) break; await sleep(500); }
+      log('uploaded ' + srcs().filter((s) => keepRe.test(s)).length + '/' + names.length); }
     let n = 0;
     for (let k = 0; k < 60; k++) {
-      const old = items().find((li) => !keepRe.test(li.querySelector('img')?.src || ''));
+      const old = items().find((li) => { const s = li.querySelector('img')?.src || ''; return s && !s.startsWith('blob:') && !s.startsWith('data:') && !keepRe.test(s); });
       if (!old) break;
       old.querySelectorAll('button')[1].click(); await sleep(700); btnText('Confirm')?.click(); await sleep(1300); n++;
     }
