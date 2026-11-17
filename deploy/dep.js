@@ -75,7 +75,7 @@ window.__dep = async function (o) {
         log('put2 ' + (await put(b)));
         procGalId = ng.id;
         // reload editor so toolbars exist for the new sections
-        location.href = '/config/pages?frameUrl=%2F' + o.slug; return 'reload';
+        if (o.noReload) { S.done = true; return 'reload'; } location.href = '/config/pages?frameUrl=%2F' + o.slug; return 'reload';
       }
     }
     if (o.nWeb > 0) { const r = await fillGallery(gal.id, o.web, '-', new RegExp(o.pid + '-w\\d')); log('web ' + JSON.stringify(r)); }
