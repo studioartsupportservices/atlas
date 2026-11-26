@@ -1,0 +1,27 @@
+{
+ "pid": "pettersen-plaza",
+ "web": [
+  "w01.jpg",
+  "w02.jpg",
+  "w03.jpg",
+  "w04.jpg",
+  "w05.jpg",
+  "w06.jpg",
+  "w07.jpg",
+  "w08.jpg",
+  "w09.jpg"
+ ],
+ "proc": [],
+ "hero": "hero.jpg",
+ "sources": [
+  "08 Street level - glass balloons.jpg",
+  "06 Plaza overhead - day.jpg",
+  "01 Aerial - day.jpg",
+  "09 Street view - day.jpg",
+  "03 Aerial - evening.jpg",
+  "07 Plaza overhead - evening.jpg",
+  "05 Aerial - night.jpg",
+  "04 Aerial - dusk.jpg",
+  "02 Aerial - day, smaller scale.jpg"
+ ]
+}

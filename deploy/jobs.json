@@ -852,5 +852,24 @@
   "nWeb": 7,
   "nProc": 0,
   "hero": "w01.jpg"
+ },
+ {
+  "pid": "pettersen-plaza",
+  "slug": "pettersen-plaza",
+  "web": [
+   "w01.jpg",
+   "w02.jpg",
+   "w03.jpg",
+   "w04.jpg",
+   "w05.jpg",
+   "w06.jpg",
+   "w07.jpg",
+   "w08.jpg",
+   "w09.jpg"
+  ],
+  "proc": [],
+  "nWeb": 9,
+  "nProc": 0,
+  "hero": "hero.jpg"
  }
 ]
